@@ -6,11 +6,14 @@ package frc.robot;
 
 import frc.robot.subsystems.SwerveModule;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.Constants.OIConstants;
 import frc.robot.commands.SwerveJoystickCmd;
 
 import frc.robot.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -23,10 +26,9 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
 
-  private static AutoAlignCmd align = new AutoAlignCmd(swerveSubsystem);
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  
+  XboxController controller1 = new XboxController(Constants.OIConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -34,10 +36,10 @@ public class RobotContainer {
 		// joystick 1
 		swerveSubsystem.setDefaultCommand(new SwerveJoystickCmd(
       swerveSubsystem,
-      () -> -Math.abs(joystick1.getRawAxis(OIConstants.kDriverXAxis)) * joystick1.getRawAxis(OIConstants.kDriverXAxis),// x and y speed switched up
-      () -> -Math.abs(joystick1.getRawAxis(OIConstants.kDriverYAxis)) * joystick1.getRawAxis(OIConstants.kDriverYAxis),
-      () -> Math.abs(joystick1.getRawAxis(OIConstants.kDriverRotAxis)) * joystick1.getRawAxis(OIConstants.kDriverRotAxis),
-      () -> !joystick1.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)));
+       () -> -Math.abs(controller1.getRawAxis(OIConstants.kDriverXAxis)) * controller1.getRawAxis(OIConstants.kDriverXAxis),// x and y speed switched up
+       () -> -Math.abs(controller1.getRawAxis(OIConstants.kDriverYAxis)) * controller1.getRawAxis(OIConstants.kDriverYAxis),
+       () ->Math.abs(controller1.getRawAxis(OIConstants.kDriverRotAxis)) * controller1.getRawAxis(OIConstants.kDriverRotAxis),
+       () ->!controller1.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)));
 
     configureBindings();
   }
@@ -53,7 +55,7 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // joystick 1
-    new JoystickButton(joystick1, 6).whenPressed(() -> swerveSubsystem.zeroHeading());
+    new JoystickButton(controller1, 6).whenPressed(() -> swerveSubsystem.zeroHeading());
 
     // joystick 2
     // new JoystickButton(joystick2, 10).whenPressed(() -> swerveSubsystem.dReset()); // remove this after ONLY FOR AUTO TESTING!!!!
