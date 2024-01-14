@@ -75,10 +75,10 @@ public static final class DriveConstants {
     public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
 
    // need to update below one is only a placeholder!
-    public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 2.80315628101;
-    public static final double kBackLeftDriveAbsoluteEncoderOffsetRad =0.54578828858;
-    public static final double kFrontRightDriveAbsoluteEncoderOffsetRad =4.84406432896;
-    public static final double kBackRightDriveAbsoluteEncoderOffsetRad =1.43903638684;
+    public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0;
+    public static final double kBackLeftDriveAbsoluteEncoderOffsetRad =0;
+    public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0;
+    public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 0;
 
     public static final double kPhysicalMaxSpeedMetersPerSecond = 2.6;//might need to update
     public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 0.25  * Math.PI;//might need to ypdate
