@@ -18,22 +18,22 @@ import edu.wpi.first.math.geometry.Translation2d;
  */
 public final class Constants {
   public static final class ModuleConstants {
-    public static final double kWheelDiameterMeters = Units.inchesToMeters(4);//update
-    public static final double kDriveMotorGearRatio = 1 / 8.14;//updated, do not delete comment
-    public static final double kTurningMotorGearRatio = 7.0 / 150.0;//updated, do not delete comment
+    public static final double kWheelDiameterMeters = Units.inchesToMeters(4.5); 
+    public static final double kDriveMotorGearRatio = 1 / 6.75;
+    public static final double kTurningMotorGearRatio = 7.0 / 150.0;
     public static final double kDriveEncoderRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters;
     public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
     public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
     public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
-    public static final double kPTurning = 0.4;//if swerve is veering to a direction, try tuning this
+    public static final double kPTurning = 0.4; // tune later
 
 }
 
 public static final class DriveConstants {
 
-    public static final double kTrackWidth = Units.inchesToMeters(30); //updated, do not delete comment
+    public static final double kTrackWidth = Units.inchesToMeters(28); 
     // Distance between right and left wheels
-    public static final double kWheelBase = Units.inchesToMeters(30); //updated, do not delete comment
+    public static final double kWheelBase = Units.inchesToMeters(28); 
     // Distance between front and back wheels
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
             new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
@@ -96,10 +96,10 @@ public static final class OIConstants {
     public static final int kDriverController2Port = 1;
 
     //update below
-    public static final int kDriverYAxis = 0;
-    public static final int kDriverXAxis = 1;
-    public static final int kDriverRotAxis = 2;
-    public static final int kDriverFieldOrientedButtonIdx = 2; //was originally 4
+    public static final int kDriverYAxis = 1;
+    public static final int kDriverXAxis = 0;
+    public static final int kDriverRotAxis = 4;
+    public static final int kDriverFieldOrientedButtonIdx = 2; // is B on controller
 
     public static final double kDeadband = 0.1;
 }
