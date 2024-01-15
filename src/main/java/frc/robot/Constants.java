@@ -42,6 +42,8 @@ public static final class DriveConstants {
             new Translation2d(kWheelBase / 2, kTrackWidth / 2)); // If wheels have an x shape, then switch the negatives
 
     //make sure motors have matching IDs
+
+    /*
     public static final int kFrontLeftDriveMotorPort = 5;
     public static final int kBackLeftDriveMotorPort = 7;
     public static final int kFrontRightDriveMotorPort = 3;
@@ -52,6 +54,18 @@ public static final class DriveConstants {
     public static final int kBackLeftTurningMotorPort = 8;
     public static final int kFrontRightTurningMotorPort = 4;
     public static final int kBackRightTurningMotorPort = 2;
+     */
+
+    public static final int kFrontLeftDriveMotorPort = 4;
+    public static final int kBackLeftDriveMotorPort = 2;
+    public static final int kFrontRightDriveMotorPort = 6;
+    public static final int kBackRightDriveMotorPort = 8;
+
+    //make sure motors have matching IDs
+    public static final int kFrontLeftTurningMotorPort = 3;
+    public static final int kBackLeftTurningMotorPort = 1;
+    public static final int kFrontRightTurningMotorPort = 5;
+    public static final int kBackRightTurningMotorPort = 7;
 
     public static final boolean kFrontLeftTurningEncoderReversed = true;
     public static final boolean kBackLeftTurningEncoderReversed = true;
