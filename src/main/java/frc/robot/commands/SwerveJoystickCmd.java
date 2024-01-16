@@ -70,20 +70,20 @@ public class SwerveJoystickCmd extends CommandBase{
         // System.out.println("|" + turningSpeed);
 
         ChassisSpeeds chassisSpeeds;
-        if (fieldOrientedFunction.get()){
-            // speed, not displacement. Speeds are recorded by a the joystick in RobotContainer
-            /**
-             * Passed into the constructor: 
-             * 1. x, y speed relative to the field 
-             * 2. turningSpeed: angular momentum
-             * 3. swerveSubsystem.getRotation2d(): gyro angle
-             * */ 
-                SmartDashboard.putBoolean("field oreinted", true);
-             chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
-        } else {
+        // if (fieldOrientedFunction.get()){
+        //     // speed, not displacement. Speeds are recorded by a the joystick in RobotContainer
+        //     /**
+        //      * Passed into the constructor: 
+        //      * 1. x, y speed relative to the field 
+        //      * 2. turningSpeed: angular momentum
+        //      * 3. swerveSubsystem.getRotation2d(): gyro angle
+        //      * */ 
+        //         SmartDashboard.putBoolean("field oreinted", true);
+        //      chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
+        // } else {
             SmartDashboard.putBoolean("field oreinted", false);
             chassisSpeeds = new ChassisSpeeds(xSpeed, ySpeed, turningSpeed);
-        }
+        //}
 
         // Kinematics turns ChassisSpeeds into swerve states 
         SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);

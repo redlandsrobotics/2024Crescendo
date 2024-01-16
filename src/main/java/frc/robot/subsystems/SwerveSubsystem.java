@@ -64,13 +64,20 @@ public class SwerveSubsystem extends SubsystemBase {
      public final AHRS gyro = new AHRS(SPI.Port.kMXP);
     // public final AHRS gyro = new AHRS(SPI.Port.kOnboardCS0);
     // public final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+    public SwerveModulePosition[] getModulePositions() {
+        return new SwerveModulePosition[] {
+            frontLeft.getPosition(),
+            frontRight.getPosition(),
+            backLeft.getPosition(),
+            backRight.getPosition()
+        };
+        }
 
     //private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics,
                // new Rotation2d(0));
 
      private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(
-        DriveConstants.kDriveKinematics, gyro.getRotation2d(), getModulePositions(), 
-             new Pose2d()); // might need to change according to docs, check https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-odometry.html
+        DriveConstants.kDriveKinematics, gyro.getRotation2d(), getModulePositions(), new Pose2d()); // might need to change according to docs, check https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-odometry.html
 
     // private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(
     // DriveConstants.kDriveKinematics, gyro.getAngle(), getModulePositions(), 
@@ -166,25 +173,15 @@ public class SwerveSubsystem extends SubsystemBase {
     //     backLeft.resetConstants();
     // }
 
-    public double gyrovalue(){
-        return gyro.getPitch(); 
-    }
 
-    public SwerveModulePosition[] getModulePositions() {
-        return new SwerveModulePosition[] {
-            frontLeft.getPosition(),
-            frontRight.getPosition(),
-            backLeft.getPosition(),
-            backRight.getPosition()
-        };
-        }
+    
 
-        public void zeroHeading() {
-            gyro.reset();
+       public void zeroHeading() {
+           gyro.reset();
         }
 
         public double getHeading() {
-             return -Math.IEEEremainder(gyro.getAngle(), 360);
+            return -Math.IEEEremainder(gyro.getAngle(), 360);
             //return 69.0;
         }
 
@@ -220,7 +217,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-         odometer.update(getRotation2d(), getModulePositions()); //in case of odomoter problems check this first for debug
+         odometer.update(getRotation2d() , getModulePositions()); //in case of odomoter problems check this first for debug
             //  SmartDashboard.putNumber("Robot Heading", getHeading());
             //  SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
               getVoltages();
@@ -229,16 +226,16 @@ public class SwerveSubsystem extends SubsystemBase {
 
         // System.out.printsqtln("test");
         // System.out.println("FL | " + frontLeft.returnVoltage());
-        SmartDashboard.putNumber("FL | ",  frontLeft.getAbsoluteEncoderRad());
+        //SmartDashboard.putNumber("FL | ",  frontLeft.getAbsoluteEncoderRad());
   
         // System.out.println("FR | " + frontRight.returnVoltage());
-        SmartDashboard.putNumber("FR | ", frontRight.getAbsoluteEncoderRad());
+        //SmartDashboard.putNumber("FR | ", frontRight.getAbsoluteEncoderRad());
 
         // System.out.println("BL | " + backLeft.returnVoltage());
-        SmartDashboard.putNumber("BL | ", backLeft.getAbsoluteEncoderRad());
+        //SmartDashboard.putNumber("BL | ", backLeft.getAbsoluteEncoderRad());
 
         // System.out.println("BR | " + backRight.returnVoltage());
-        SmartDashboard.putNumber("BR | ", backRight.getAbsoluteEncoderRad());
+        //SmartDashboard.putNumber("BR | ", backRight.getAbsoluteEncoderRad());
         // System.out.println("FL |" + frontLeft.getTurningPosition());
         // System.out.println("RL |" + frontRight.getTurningPosition());
         // System.out.println("BL |" + backLeft.getTurningPosition());

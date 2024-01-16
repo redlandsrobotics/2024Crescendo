@@ -119,11 +119,11 @@ public class SwerveModule extends SubsystemBase {
   }
 
   public SwerveModuleState getState() {
-    return new SwerveModuleState(getDriveVelocity(), /*new Rotation2d(getAbsoluteEncoderRad()*/new Rotation2d(getTurningPosition()));//switch between neo encoders and abs encoders
+    return new SwerveModuleState(getDriveVelocity(), /*new Rotation2d(getAbsoluteEncoderRad())*/new Rotation2d(getTurningPosition()));//switch between neo encoders and abs encoders
   }
 
   public SwerveModulePosition getPosition() {
-	return new SwerveModulePosition(getDriveVelocity(), /*new Rotation2d(getAbsoluteEncoderRad()*/new Rotation2d(getTurningPosition()));//switch between neo encoders and abs encoders
+	return new SwerveModulePosition(getDriveVelocity(), /*new Rotation2d(getAbsoluteEncoderRad())*/new Rotation2d(getTurningPosition()));//switch between neo encoders and abs encoders
   }
 
   public void setDesiredState(SwerveModuleState state) {
