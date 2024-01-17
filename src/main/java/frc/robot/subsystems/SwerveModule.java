@@ -119,11 +119,11 @@ public class SwerveModule extends SubsystemBase {
   }
 
   public SwerveModuleState getState() {
-    return new SwerveModuleState(getDriveVelocity(), /*new Rotation2d(getAbsoluteEncoderRad())*/new Rotation2d(getTurningPosition()));//switch between neo encoders and abs encoders
+    return new SwerveModuleState(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad())/*new Rotation2d(getTurningPosition())*/);//switch between neo encoders and abs encoders
   }
 
   public SwerveModulePosition getPosition() {
-	return new SwerveModulePosition(getDriveVelocity(), /*new Rotation2d(getAbsoluteEncoderRad())*/new Rotation2d(getTurningPosition()));//switch between neo encoders and abs encoders
+	return new SwerveModulePosition(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad())/*new Rotation2d(getTurningPosition())*/);//switch between neo encoders and abs encoders
   }
 
   public void setDesiredState(SwerveModuleState state) {
@@ -144,7 +144,7 @@ public class SwerveModule extends SubsystemBase {
     // output = output / 10.0;
     // driveMotor.set(output);
 
-    turningMotor.set(turningPidController.calculate(/*getAbsoluteEncoderRad()*/getTurningPosition(), state.angle.getRadians()));//switch between neo encoders and abs encoders
+    turningMotor.set(turningPidController.calculate(getAbsoluteEncoderRad()/*getTurningPosition()*/, state.angle.getRadians()));//switch between neo encoders and abs encoders
   //   SmartDashboard.putString("Swerve[" + absoluteEncoder.getChannel() + "] state", state.toString());
   }
 
