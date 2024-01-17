@@ -5,7 +5,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -64,14 +64,7 @@ public class SwerveSubsystem extends SubsystemBase {
      public final AHRS gyro = new AHRS(SPI.Port.kMXP);
     // public final AHRS gyro = new AHRS(SPI.Port.kOnboardCS0);
     // public final ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-    public SwerveModulePosition[] getModulePositions() {
-        return new SwerveModulePosition[] {
-            frontLeft.getPosition(),
-            frontRight.getPosition(),
-            backLeft.getPosition(),
-            backRight.getPosition()
-        };
-        }
+    
 
     //private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics,
                // new Rotation2d(0));
@@ -122,6 +115,15 @@ public class SwerveSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("BackLeft Drive: ", backLeft.driveV());
         SmartDashboard.putNumber("BackRight Drive: ", backRight.driveV());
     }
+
+    public SwerveModulePosition[] getModulePositions() {
+        return new SwerveModulePosition[] {
+            frontLeft.getPosition(),
+            frontRight.getPosition(),
+            backLeft.getPosition(),
+            backRight.getPosition()
+        };
+        }
 
     public void getSpeeds() {
         SmartDashboard.putNumber("FrontLeft Drive Speed", frontLeft.getDriveVelocity());
@@ -201,7 +203,7 @@ public class SwerveSubsystem extends SubsystemBase {
      
 
 
-    public CommandBase exampleMethodCommand() {
+    public Command exampleMethodCommand() {
         return null;
     }
 
