@@ -70,7 +70,7 @@ public class SwerveJoystickCmd extends Command{
         // System.out.println("|" + turningSpeed);
 
         ChassisSpeeds chassisSpeeds;
-         if (fieldOrientedFunction.get()){
+        if (fieldOrientedFunction.get()){
         //     // speed, not displacement. Speeds are recorded by a the joystick in RobotContainer
         //     /**
         //      * Passed into the constructor: 
@@ -78,9 +78,10 @@ public class SwerveJoystickCmd extends Command{
         //      * 2. turningSpeed: angular momentum
         //      * 3. swerveSubsystem.getRotation2d(): gyro angle
         //      * */ 
-                SmartDashboard.putBoolean("field oreinted", true);
-              chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
-         } else {
+            SmartDashboard.putBoolean("field oreinted", true);
+            chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
+        } 
+        else {
             SmartDashboard.putBoolean("field oreinted", false);
             chassisSpeeds = new ChassisSpeeds(xSpeed, ySpeed, turningSpeed);
         }

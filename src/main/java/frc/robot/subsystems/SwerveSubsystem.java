@@ -69,8 +69,9 @@ public class SwerveSubsystem extends SubsystemBase {
     //private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics,
                // new Rotation2d(0));
 
-     private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(
-        DriveConstants.kDriveKinematics, gyro.getRotation2d(), getModulePositions(), new Pose2d()); // might need to change according to docs, check https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-odometry.html
+    private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(
+                DriveConstants.kDriveKinematics, gyro.getRotation2d(), getModulePositions(), 
+                     new Pose2d()); // might need to change according to docs, check https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-odometry.html
 
     // private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(
     // DriveConstants.kDriveKinematics, gyro.getAngle(), getModulePositions(), 
@@ -116,14 +117,7 @@ public class SwerveSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("BackRight Drive: ", backRight.driveV());
     }
 
-    public SwerveModulePosition[] getModulePositions() {
-        return new SwerveModulePosition[] {
-            frontLeft.getPosition(),
-            frontRight.getPosition(),
-            backLeft.getPosition(),
-            backRight.getPosition()
-        };
-        }
+    
 
     public void getSpeeds() {
         SmartDashboard.putNumber("FrontLeft Drive Speed", frontLeft.getDriveVelocity());
@@ -175,17 +169,24 @@ public class SwerveSubsystem extends SubsystemBase {
     //     backLeft.resetConstants();
     // }
 
+    public SwerveModulePosition[] getModulePositions() {
+        return new SwerveModulePosition[] {
+            frontLeft.getPosition(),
+            frontRight.getPosition(),
+            backLeft.getPosition(),
+            backRight.getPosition()
+        };
+    }
 
     
 
-       public void zeroHeading() {
+    public void zeroHeading() {
            gyro.reset();
-        }
+    }
 
-        public double getHeading() {
-            return -Math.IEEEremainder(gyro.getAngle(), 360);
-            //return 69.0;
-        }
+    public double getHeading() {
+        return -Math.IEEEremainder(gyro.getAngle(), 360);
+    }
 
     public Rotation2d getRotation2d() {
         return Rotation2d.fromDegrees(getHeading());
@@ -222,10 +223,10 @@ public class SwerveSubsystem extends SubsystemBase {
          odometer.update(getRotation2d() , getModulePositions()); //in case of odomoter problems check this first for debug
             //  SmartDashboard.putNumber("Robot Heading", getHeading());
             //  SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
-              getVoltages();
-              getSpeeds();
-              getEncoders();
-
+             // getVoltages();
+              //getSpeeds();
+             // getEncoders();
+        SmartDashboard.putNumber("Gyro Heading", getHeading());
         // System.out.printsqtln("test");
         // System.out.println("FL | " + frontLeft.returnVoltage());
         //SmartDashboard.putNumber("FL | ",  frontLeft.getAbsoluteEncoderRad());
@@ -235,10 +236,10 @@ public class SwerveSubsystem extends SubsystemBase {
 
         // System.out.println("BL | " + backLeft.returnVoltage());
         //SmartDashboard.putNumber("BL | ", backLeft.getAbsoluteEncoderRad());
-    //    System.out.println("FR | " + frontRight.getAbsoluteEncoderRad());
-        // System.out.println("BR | " + backRight.getAbsoluteEncoderRad());
-    //     System.out.println("FL | " + frontLeft.getAbsoluteEncoderRad());
-    //     System.out.println("BL | " + backLeft.getAbsoluteEncoderRad());
+        //System.out.println("FR | " + frontRight.getAbsoluteEncoderRad());
+        //System.out.println("BR | " + backRight.getAbsoluteEncoderRad());
+        //System.out.println("FL | " + frontLeft.getAbsoluteEncoderRad());
+        //System.out.println("BL | " + backLeft.getAbsoluteEncoderRad());
         // System.out.println("BR | " + backRight.returnVoltage());
         //SmartDashboard.putNumber("BR | ", backRight.getAbsoluteEncoderRad());
         // System.out.println("FL |" + frontLeft.getTurningPosition());

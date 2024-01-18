@@ -38,8 +38,8 @@ public class RobotContainer {
 		// joystick 1
 		swerveSubsystem.setDefaultCommand(new SwerveJoystickCmd(
       swerveSubsystem,
-       () -> -Math.abs(controller1.getRawAxis(OIConstants.kDriverYAxis)) * controller1.getRawAxis(OIConstants.kDriverYAxis),// x and y speed switched up
-       () -> -Math.abs(controller1.getRawAxis(OIConstants.kDriverXAxis)) * controller1.getRawAxis(OIConstants.kDriverXAxis),
+       () -> Math.abs(controller1.getRawAxis(OIConstants.kDriverYAxis)) * controller1.getRawAxis(OIConstants.kDriverYAxis),// x and y speed switched up
+       () -> Math.abs(controller1.getRawAxis(OIConstants.kDriverXAxis)) * controller1.getRawAxis(OIConstants.kDriverXAxis),
        () ->Math.abs(controller1.getRawAxis(OIConstants.kDriverRotAxis)) * controller1.getRawAxis(OIConstants.kDriverRotAxis),
        () ->!controller1.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)));
 
