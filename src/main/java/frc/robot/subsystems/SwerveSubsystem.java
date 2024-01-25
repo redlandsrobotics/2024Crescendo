@@ -141,6 +141,13 @@ public class SwerveSubsystem extends SubsystemBase {
                                                                backLeft.getState(),
                                                                backRight.getState());}
     
+    public void driveRobotRelative(ChassisSpeeds speeds)
+    {
+        ChassisSpeeds chassisSpeeds = new ChassisSpeeds(speeds.vxMetersPerSecond, speeds.vyMetersPerSecond, speeds.omegaRadiansPerSecond);
+        SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
+
+        RobotContainer.swerveSubsystem.setModuleStates(moduleStates);
+    }
     
 
     
