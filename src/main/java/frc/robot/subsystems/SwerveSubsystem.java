@@ -101,22 +101,11 @@ public class SwerveSubsystem extends SubsystemBase {
         } catch (Exception e) {
         }
         }).start();
-     
-        // Configuring Autobuilder
-        
-        
 
-        // End configuring Autobuilder
-    }
-
-    // Assuming this is a method in your drive subsystem
-    //path planner
-    public Command followPathCommand(String pathName) {
-        PathPlannerPath path = PathPlannerPath.fromPathFile(pathName);
-
-        return new FollowPathHolonomic(
-                path,
+        // Configure AutoBuilder last
+        AutoBuilder.configureHolonomic(
                 this::getPose, // Robot pose supplier
+                this::resetOdometry, // Method to reset odometry (will be called if your auto has a starting pose)
                 this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
                 this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
                 new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
@@ -140,6 +129,10 @@ public class SwerveSubsystem extends SubsystemBase {
                 this // Reference to this subsystem to set requirements
         );
     }
+
+    // Assuming this is a method in your drive subsystem
+    //path planner
+    
 
     public void driveRobotRelative(ChassisSpeeds speeds)
     {
