@@ -10,13 +10,18 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.ZeroHeadingCmd;
 
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.path.PathPlannerPath;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+import com.pathplanner.lib.auto.NamedCommands;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -31,6 +36,8 @@ public class RobotContainer {
   //commands
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
 
+  //Naming commands
+  
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   XboxController controller1 = new XboxController(Constants.OIConstants.kDriverControllerPort);
@@ -73,7 +80,10 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-            return new PathPlannerAuto("Test Auto");
+      PathPlannerPath path = PathPlannerPath.fromPathFile("Test Path");
+
+      return AutoBuilder.followPathWithEvents(path);
+
 
   }
 }
