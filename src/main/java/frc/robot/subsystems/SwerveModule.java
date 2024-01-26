@@ -137,12 +137,12 @@ public class SwerveModule extends SubsystemBase {
     driveMotor.set(state.speedMetersPerSecond / DriveConstants.kPhysicalMaxAngularSpeedRadiansPerSecond);
 
 
-    // System.out.println("driveMotorVelo" + getDriveVelocity());
-    // System.out.println("driveMotorPos0" + getDrivePosition());
-    // System.out.println("StartPosition" + startPosition);
-    // double output = drivePidController.calculate(getDrivePosition(), startPosition);
-    // output = output / 10.0;
-    // driveMotor.set(output);
+// System.out.println("driveMotorVelo" + getDriveVelocity());
+// System.out.println("driveMotorPos0" + getDrivePosition());
+// System.out.println("StartPosition" + startPosition);
+// double output = drivePidController.calculate(getDrivePosition(), startPosition);
+// output = output / 10.0;
+// driveMotor.set(output);
 
     turningMotor.set(turningPidController.calculate(getAbsoluteEncoderRad()/*getTurningPosition()*/, state.angle.getRadians()));//switch between neo encoders and abs encoders
   //   SmartDashboard.putString("Swerve[" + absoluteEncoder.getChannel() + "] state", state.toString());

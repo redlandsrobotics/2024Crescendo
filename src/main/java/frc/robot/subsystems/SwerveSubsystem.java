@@ -108,8 +108,8 @@ public class SwerveSubsystem extends SubsystemBase {
                     this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
                     this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
                     new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-                            new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
-                            new PIDConstants(5.0, 0.0, 0.0), // Rotation PID constants
+                            new PIDConstants(1.0, 0.0, 0.0), // Translation PID constants
+                            new PIDConstants(1.0, 0.0, 0.0), // Rotation PID constants
                             4.5, // Max module speed, in m/s
                             0.4, // Drive base radius in meters. Distance from robot center to furthest module.
                             new ReplanningConfig() // Default path replanning config. See the API for the options here
@@ -131,6 +131,15 @@ public class SwerveSubsystem extends SubsystemBase {
         // End configuring Autobuilder
     }
 
+    public void driveRobotRelative(ChassisSpeeds speeds)
+    {
+        ChassisSpeeds chassisSpeeds = new ChassisSpeeds(speeds.vxMetersPerSecond, speeds.vyMetersPerSecond, speeds.omegaRadiansPerSecond);
+        SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
+
+        RobotContainer.swerveSubsystem.setModuleStates(moduleStates);
+    }
+
+
     // public ChassisSpeeds getRobotRelativSpeeds()
     // {
     //     //return 
@@ -141,13 +150,7 @@ public class SwerveSubsystem extends SubsystemBase {
                                                                backLeft.getState(),
                                                                backRight.getState());}
     
-    public void driveRobotRelative(ChassisSpeeds speeds)
-    {
-        ChassisSpeeds chassisSpeeds = new ChassisSpeeds(speeds.vxMetersPerSecond, speeds.vyMetersPerSecond, speeds.omegaRadiansPerSecond);
-        SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
-
-        RobotContainer.swerveSubsystem.setModuleStates(moduleStates);
-    }
+    
     
 
     
