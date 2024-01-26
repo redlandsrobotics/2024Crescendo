@@ -30,7 +30,7 @@ public class RobotContainer {
 
   //commands
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
-  
+
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   XboxController controller1 = new XboxController(Constants.OIConstants.kDriverControllerPort);
@@ -73,7 +73,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-            return new PathPlannerAuto("New Auto");
+            return new PathPlannerAuto("Test Auto");
 
   }
 }
