@@ -14,6 +14,7 @@ import com.kauailabs.navx.frc.AHRS;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.commands.FollowPathHolonomic;
 import com.pathplanner.lib.path.PathPlannerPath;
+import com.pathplanner.lib.util.ChassisSpeedsRateLimiter;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
@@ -136,9 +137,10 @@ public class SwerveSubsystem extends SubsystemBase {
 
     public void driveRobotRelative(ChassisSpeeds speeds)
     {
-        ChassisSpeeds chassisSpeeds = new ChassisSpeeds(speeds.vxMetersPerSecond, speeds.vyMetersPerSecond, speeds.omegaRadiansPerSecond);
+        ChassisSpeedsRateLimiter rateLimit = new ChassisSpeedsRateLimiter(0.5, 0.5, speeds);
+        ChassisSpeeds newSpeeds =  rateLimit.calculate(speeds);
+        ChassisSpeeds chassisSpeeds = new ChassisSpeeds(newSpeeds.vxMetersPerSecond, newSpeeds.vyMetersPerSecond, newSpeeds.omegaRadiansPerSecond);
         SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
-
         RobotContainer.swerveSubsystem.setModuleStates(moduleStates);
     }
 
