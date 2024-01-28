@@ -17,6 +17,7 @@ import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.ChassisSpeedsRateLimiter;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
+import com.pathplanner.lib.util.PPLibTelemetry;
 import com.pathplanner.lib.util.ReplanningConfig;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -112,7 +113,7 @@ public class SwerveSubsystem extends SubsystemBase {
                 new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
                         new PIDConstants(0.1, 0.0, 0.0), // Translation PID constants
                         new PIDConstants(0.1, 0.0, 0.0), // Rotation PID constants
-                        0.5, // Max module speed, in m/s
+                        4.5, // Max module speed, in m/s
                         0.3556, // Drive base radius in meters. Distance from robot center to furthest module.
                         new ReplanningConfig() // Default path replanning config. See the API for the options here
                 ),
@@ -137,7 +138,8 @@ public class SwerveSubsystem extends SubsystemBase {
 
     public void driveRobotRelative(ChassisSpeeds speeds)
     {
-        ChassisSpeedsRateLimiter rateLimit = new ChassisSpeedsRateLimiter(0.5, 0.5, speeds);
+        ChassisSpeedsRateLimiter rateLimit = new ChassisSpeedsRateLimiter(1, 1, speeds);
+        rateLimit.setRateLimits(0.1f, 0.1f);
         ChassisSpeeds newSpeeds =  rateLimit.calculate(speeds);
         ChassisSpeeds chassisSpeeds = new ChassisSpeeds(newSpeeds.vxMetersPerSecond, newSpeeds.vyMetersPerSecond, newSpeeds.omegaRadiansPerSecond);
         SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
@@ -147,7 +149,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
     // public ChassisSpeeds getRobotRelativSpeeds()
     // {
-    //     //return 
+    //       return 
     // }
     public ChassisSpeeds getRobotRelativeSpeeds(){
         return DriveConstants.kDriveKinematics.toChassisSpeeds(frontLeft.getState(),
@@ -297,7 +299,8 @@ public class SwerveSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-         odometer.update(getRotation2d() , getModulePositions()); //in case of odomoter problems check this first for debug
+        //PPLibTelemetry newTelemetry = new PPLibTelemetry();
+        odometer.update(getRotation2d() , getModulePositions()); //in case of odomoter problems check this first for debug
             //  SmartDashboard.putNumber("Robot Heading", getHeading());
             //  SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
              // getVoltages();
