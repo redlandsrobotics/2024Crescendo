@@ -138,11 +138,7 @@ public class SwerveSubsystem extends SubsystemBase {
 
     public void driveRobotRelative(ChassisSpeeds speeds)
     {
-        ChassisSpeedsRateLimiter rateLimit = new ChassisSpeedsRateLimiter(1, 1, speeds);
-        rateLimit.setRateLimits(0.1f, 0.1f);
-        ChassisSpeeds newSpeeds =  rateLimit.calculate(speeds);
-        ChassisSpeeds chassisSpeeds = new ChassisSpeeds(newSpeeds.vxMetersPerSecond, newSpeeds.vyMetersPerSecond, newSpeeds.omegaRadiansPerSecond);
-        SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
+        SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(speeds);
         RobotContainer.swerveSubsystem.setModuleStates(moduleStates);
     }
 
