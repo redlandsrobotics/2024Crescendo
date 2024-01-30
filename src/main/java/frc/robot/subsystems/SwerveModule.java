@@ -68,11 +68,7 @@ public class SwerveModule extends SubsystemBase {
   public void turningtest(){
     turningMotor.set(0.2);
   }
-  // public void resetConstants() {
-  //   //12:36am monkey code
-  //   startPosition = getDrivePosition() + 3.0;
-  // }
-  //hi
+  
   public double getDrivePosition(){
     return driveEncoder.getPosition();
   }
