@@ -271,10 +271,18 @@ public class SwerveSubsystem extends SubsystemBase {
     //     return odometer.resetPosition(getHeading(), getModulePositions(), pose );
     //  }hello
 
-     public void resetOdometry(Pose2d pose) {
-    // //in case of odomoter problems check this first for debug
-         odometer.resetPosition(getRotation2d(), getModulePositions(), new Pose2d());
-     }
+    public void resetOdometry(Pose2d pose) {
+        // //in case of odomoter problems check this first for debug
+             odometer.resetPosition(
+                Rotation2d.fromDegrees(getHeading()),
+                new SwerveModulePosition[] {
+                    frontLeft.getPosition(),
+                    frontRight.getPosition(),
+                    backLeft.getPosition(),
+                    backRight.getPosition()
+                },
+                pose);
+         }
 
      
 
