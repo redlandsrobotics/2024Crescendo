@@ -94,7 +94,7 @@ public static final class DriveConstants {
     public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0.1910029354978664;
     public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 1.3559470393253346;
 
-    public static final double kPhysicalMaxSpeedMetersPerSecond = 2;//might need to update
+    public static final double kPhysicalMaxSpeedMetersPerSecond = 4.6;//might need to update
     public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 0.25  * Math.PI;//might need to ypdate
 
     public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 4;

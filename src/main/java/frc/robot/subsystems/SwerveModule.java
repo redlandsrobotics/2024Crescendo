@@ -130,7 +130,7 @@ public class SwerveModule extends SubsystemBase {
     }
 
     state = SwerveModuleState.optimize(state, getState().angle);
-    driveMotor.set(state.speedMetersPerSecond / DriveConstants.kPhysicalMaxAngularSpeedRadiansPerSecond);
+    driveMotor.set(state.speedMetersPerSecond / DriveConstants.kPhysicalMaxSpeedMetersPerSecond);
 
 
 
