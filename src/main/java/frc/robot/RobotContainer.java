@@ -4,11 +4,13 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveModule;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.AutoAlignCmd;
+import frc.robot.commands.ShootCmd;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.ZeroHeadingCmd;
 
@@ -35,10 +37,12 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
   public static VisionSubsystem vision = new VisionSubsystem();
+  public static ShooterSubsystem shooter = new ShooterSubsystem();
 
   //commands
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
   private static AutoAlignCmd align = new AutoAlignCmd(swerveSubsystem);
+  private static ShootCmd shoot = new ShootCmd();
   //Naming commands
   
 
@@ -72,6 +76,7 @@ public class RobotContainer {
     // joystick 1
     new JoystickButton(controller1, 6).onTrue(zeroheading);
     new JoystickButton(controller1, 1).toggleOnTrue(align);
+    new JoystickButton(controller1, 3).whileTrue(shoot);
 
 
     // joystick 2
