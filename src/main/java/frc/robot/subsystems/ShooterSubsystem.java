@@ -24,6 +24,8 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public CANSparkFlex top = new CANSparkFlex(9, MotorType.kBrushless);
   public CANSparkFlex bottom = new CANSparkFlex(10, MotorType.kBrushless);
+  public CANSparkMax left = new CANSparkMax(12, MotorType.kBrushless);
+  public CANSparkMax right = new CANSparkMax(11, MotorType.kBrushless);
 
   public ShooterSubsystem() {}
 
@@ -33,16 +35,26 @@ public class ShooterSubsystem extends SubsystemBase {
     bottom.set(-0.5); // to be tuned later
   }
 
+  public void LRshoot()
+  {
+    left.set(-0.5);
+    right.set(0.5);
+  }
+
   public void intake()
   {
-    top.set(-0.1); // to be tuned later
-    bottom.set(0.1); // to be tuned later
+    top.set(-0.3); // to be tuned later
+    bottom.set(0.3); // to be tuned later
+    left.set(0.3);
+    right.set(-0.3);
   }
 
   public void stop()
   {
     top.set(0.0);
     bottom.set(0.0);
+    left.set(0.0);
+    right.set(0.0);
   }
 
   @Override
