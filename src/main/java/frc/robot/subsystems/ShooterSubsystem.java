@@ -35,8 +35,8 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public void intake()
   {
-    top.set(-0.5); // to be tuned later
-    bottom.set(0.5); // to be tuned later
+    top.set(-0.1); // to be tuned later
+    bottom.set(0.1); // to be tuned later
   }
 
   public void stop()

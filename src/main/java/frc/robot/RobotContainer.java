@@ -10,6 +10,8 @@ import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.AutoAlignCmd;
+import frc.robot.commands.IntakeCmd;
+import frc.robot.commands.LRShootCmd;
 import frc.robot.commands.ShootCmd;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.ZeroHeadingCmd;
@@ -43,6 +45,8 @@ public class RobotContainer {
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
   private static AutoAlignCmd align = new AutoAlignCmd(swerveSubsystem);
   private static ShootCmd shoot = new ShootCmd();
+  private static IntakeCmd intake = new IntakeCmd();
+  private static LRShootCmd LRshoot = new LRShootCmd();
   //Naming commands
   
 
@@ -77,6 +81,8 @@ public class RobotContainer {
     new JoystickButton(controller1, 6).onTrue(zeroheading);
     new JoystickButton(controller1, 1).toggleOnTrue(align);
     new JoystickButton(controller1, 3).whileTrue(shoot);
+    new JoystickButton(controller1, 4).whileTrue(intake);
+    new JoystickButton(controller1, 5).whileTrue(LRshoot);
 
 
     // joystick 2
