@@ -31,14 +31,14 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public void shoot()
   {
-    top.set(0.5); // to be tuned later
-    bottom.set(-0.5); // to be tuned later
+    top.set(0.75); // to be tuned later
+    bottom.set(-0.75); // to be tuned later
   }
 
   public void LRshoot()
   {
-    left.set(-0.5);
-    right.set(0.5);
+    left.set(-0.75);
+    right.set(0.75);
   }
 
   public void intake()
