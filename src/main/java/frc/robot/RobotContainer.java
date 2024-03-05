@@ -4,11 +4,13 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveModule;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.Constants.OIConstants;
+import frc.robot.commands.ArmCmd;
 import frc.robot.commands.AutoAlignCmd;
 import frc.robot.commands.IntakeCmd;
 import frc.robot.commands.ShootCmd;
@@ -39,17 +41,20 @@ public class RobotContainer {
   public static SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
   public static VisionSubsystem vision = new VisionSubsystem();
   public static ShooterSubsystem shooter = new ShooterSubsystem();
+  public static ArmSubsystem arm = new ArmSubsystem();
 
   //commands
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
   private static AutoAlignCmd align = new AutoAlignCmd(swerveSubsystem);
   private static ShootCmd shoot = new ShootCmd();
   private static IntakeCmd intake = new IntakeCmd();
+
   //Naming commands
   
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   XboxController controller1 = new XboxController(Constants.OIConstants.kDriverControllerPort);
+  XboxController controller2 = new XboxController(1);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -61,6 +66,8 @@ public class RobotContainer {
        () -> Math.abs(controller1.getRawAxis(OIConstants.kDriverXAxis)) * controller1.getRawAxis(OIConstants.kDriverXAxis),
        () ->Math.abs(controller1.getRawAxis(OIConstants.kDriverRotAxis)) * controller1.getRawAxis(OIConstants.kDriverRotAxis),
        () ->!controller1.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)));
+
+    arm.setDefaultCommand(new ArmCmd(arm, () -> controller2.getRawAxis(1)));
 
     configureBindings();
   }
