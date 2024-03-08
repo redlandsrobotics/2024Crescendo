@@ -12,6 +12,7 @@ import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ArmCmd;
 import frc.robot.commands.AutoAlignCmd;
+import frc.robot.commands.ArmPIDCmd;
 import frc.robot.commands.IntakeCmd;
 import frc.robot.commands.LRShootCmd;
 import frc.robot.commands.ShootCmd;
@@ -43,11 +44,13 @@ public class RobotContainer {
   public static VisionSubsystem vision = new VisionSubsystem();
   public static ShooterSubsystem shooter = new ShooterSubsystem();
   public static ArmSubsystem arm = new ArmSubsystem();
+  
 
   //commands
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
   private static AutoAlignCmd align = new AutoAlignCmd(swerveSubsystem);
   private static LRShootCmd LRshoot = new LRShootCmd(shooter);
+  private static ArmPIDCmd armPIDCmd = new ArmPIDCmd(arm, 0.35);
 
 
   //Naming commands
@@ -88,6 +91,7 @@ public class RobotContainer {
     new JoystickButton(controller1, 5).onTrue(zeroheading);
     new JoystickButton(controller1, 1).toggleOnTrue(align);
     new JoystickButton(controller1, 6).whileTrue(LRshoot);
+    new JoystickButton(controller2,2 ).whileTrue(armPIDCmd);
     
 
 
