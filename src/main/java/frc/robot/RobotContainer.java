@@ -13,6 +13,7 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ArmCmd;
 import frc.robot.commands.AutoAlignCmd;
 import frc.robot.commands.IntakeCmd;
+import frc.robot.commands.LRShootCmd;
 import frc.robot.commands.ShootCmd;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.ZeroHeadingCmd;
@@ -46,8 +47,8 @@ public class RobotContainer {
   //commands
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
   private static AutoAlignCmd align = new AutoAlignCmd(swerveSubsystem);
-  private static ShootCmd shoot = new ShootCmd();
-  private static IntakeCmd intake = new IntakeCmd();
+  private static LRShootCmd LRshoot = new LRShootCmd(shooter);
+
 
   //Naming commands
   
@@ -68,6 +69,7 @@ public class RobotContainer {
        () ->!controller1.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)));
 
     arm.setDefaultCommand(new ArmCmd(arm, () -> controller2.getRawAxis(1)));
+    shooter.setDefaultCommand(new ShootCmd(shooter,  () -> controller1.getRawAxis(3), () -> controller1.getRawAxis(2)));
 
     configureBindings();
   }
@@ -83,11 +85,10 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // joystick 1
-    new JoystickButton(controller1, 6).onTrue(zeroheading);
+    new JoystickButton(controller1, 5).onTrue(zeroheading);
     new JoystickButton(controller1, 1).toggleOnTrue(align);
-    new JoystickButton(controller1, 3).whileTrue(shoot);
-    new JoystickButton(controller1, 4).whileTrue(intake);
-
+    new JoystickButton(controller1, 6).whileTrue(LRshoot);
+    
 
 
     // joystick 2

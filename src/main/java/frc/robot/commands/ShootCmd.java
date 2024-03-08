@@ -5,16 +5,30 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
+
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.function.Supplier;
 
 public class ShootCmd extends Command {
   /** Creates a new ShootCmd. */
-  public ShootCmd() {
-    // Use addRequirements() here to declare subsystem dependencies.
-  }
+  
+  private Supplier<Double> speedFunction;
+  private Supplier<Double> speedFunction2;
+  private final ShooterSubsystem m_subsystem;
 
+  
+  public ShootCmd(ShooterSubsystem subsystem, Supplier<Double> speedFunction, Supplier<Double> speedFunction2) {
+    // Use addRequirements() here to declare subsystem dependencies.
+    m_subsystem = subsystem;
+    this.speedFunction = speedFunction;
+    this.speedFunction2 = speedFunction2;
+    addRequirements(subsystem);
+  }
   
 
   // Called when the command is initially scheduled.
@@ -24,17 +38,22 @@ public class ShootCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute(){
+    double realTimeSpeed = speedFunction.get();  
+    double realTimeSpeed2 = speedFunction2.get();
+    
+    if (realTimeSpeed > 0.05)
+    {
       RobotContainer.shooter.shoot();
-      
-      try {
-        Thread.sleep(2000);
-      } catch (InterruptedException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-
-      RobotContainer.shooter.LRshoot();
-
+    }
+    else if(realTimeSpeed2 > 0.05)
+    {
+      RobotContainer.shooter.intake();
+    }
+    else
+    {
+      RobotContainer.shooter.stop();
+    }
+   
   }
 
   // Called once the command ends or is interrupted.

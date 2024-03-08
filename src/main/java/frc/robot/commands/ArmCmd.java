@@ -37,11 +37,11 @@ public class ArmCmd extends Command {
     {
       RobotContainer.arm.stop();
     }
-    else if(realTimeSpeed<-0.05)
+    if(realTimeSpeed < -0.05)
     {
       RobotContainer.arm.down();
     }
-      else if(realTimeSpeed>0.05)
+    if(realTimeSpeed> 0.05)
     {
       RobotContainer.arm.up();
     }

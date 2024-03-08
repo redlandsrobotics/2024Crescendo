@@ -4,27 +4,25 @@
 
 package frc.robot.commands;
 
-import java.util.function.Supplier;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
-public class IntakeCmd extends Command {
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.function.Supplier;
+
+public class LRShootCmd extends Command {
   /** Creates a new ShootCmd. */
-  
-  private Supplier<Double> speedFunction;
   private final ShooterSubsystem m_subsystem;
+    public LRShootCmd(ShooterSubsystem subsystem)
+    {
+      m_subsystem = subsystem;
+      addRequirements(subsystem);
+    }
 
   
-  public IntakeCmd(ShooterSubsystem subsystem, Supplier<Double> speedFunction) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    m_subsystem = subsystem;
-    this.speedFunction = speedFunction;
-    addRequirements(subsystem);
-  }
-  
-
 
   // Called when the command is initially scheduled.
   @Override
@@ -32,16 +30,10 @@ public class IntakeCmd extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    double realTimeSpeed = speedFunction.get();  
+  public void execute(){
     
-    if (realTimeSpeed > 0.05)
-      {
-          RobotContainer.shooter.intake();
-      }
-    else{
-      RobotContainer.shooter.stop();
-    }
+          RobotContainer.shooter.LRshoot();
+     
   }
 
   // Called once the command ends or is interrupted.
