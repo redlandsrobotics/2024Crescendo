@@ -18,6 +18,7 @@ import frc.robot.commands.LRShootCmd;
 import frc.robot.commands.ShootCmd;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.ZeroHeadingCmd;
+import frc.robot.Constants.ArmConstants;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
@@ -50,7 +51,14 @@ public class RobotContainer {
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
   private static AutoAlignCmd align = new AutoAlignCmd(swerveSubsystem);
   private static LRShootCmd LRshoot = new LRShootCmd(shooter);
-  private static ArmPIDCmd armPIDCmd = new ArmPIDCmd(arm, 0.35);
+  private static ArmPIDCmd Amp = new ArmPIDCmd(arm, ArmConstants.Amp);
+  private static ArmPIDCmd Stow = new ArmPIDCmd(arm, ArmConstants.Stow);
+  private static ArmPIDCmd Source = new ArmPIDCmd(arm, ArmConstants.Source);
+  private static ArmPIDCmd Speaker1 = new ArmPIDCmd(arm, ArmConstants.pos1);
+  private static ArmPIDCmd Speaker2 = new ArmPIDCmd(arm, ArmConstants.pos2);
+  private static ArmPIDCmd Speaker3 = new ArmPIDCmd(arm, ArmConstants.pos3);
+  private static ArmPIDCmd Speaker4 = new ArmPIDCmd(arm, ArmConstants.pos4);
+
 
 
   //Naming commands
@@ -91,7 +99,14 @@ public class RobotContainer {
     new JoystickButton(controller1, 5).onTrue(zeroheading);
     new JoystickButton(controller1, 1).toggleOnTrue(align);
     new JoystickButton(controller1, 6).whileTrue(LRshoot);
-    new JoystickButton(controller2,2 ).whileTrue(armPIDCmd);
+    new JoystickButton(controller2, 1).whileTrue(Speaker1);
+    new JoystickButton(controller2,2 ).whileTrue(Speaker2);
+    new JoystickButton(controller2, 3).whileTrue(Speaker3);
+    new JoystickButton(controller2, 4).whileTrue(Speaker4);
+    new JoystickButton(controller2, 5).whileTrue(Source);
+    new JoystickButton(controller2, 6).whileTrue(Stow);
+    new JoystickButton(controller2, 8).whileTrue(Amp);
+
     
 
 

@@ -110,6 +110,13 @@ public static final class ArmConstants {
     ;
     public static final double kI = 0.6;
     public static final double kD = 0.0;
+    public static final double Amp = 0.46;
+    public static final double Source = 0.48;
+    public static final double Stow = 0.30;
+    public static final double pos1 = 0.35;
+    public static final double pos2 = 0.35;
+    public static final double pos3 = 0.35;
+    public static final double pos4 = 0.35;
 }
 
 
