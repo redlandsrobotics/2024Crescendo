@@ -96,7 +96,8 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // joystick 1
-    new JoystickButton(controller1, 5).onTrue(zeroheading);
+    //new JoystickButton(controller1, 5).onTrue(zeroheading);
+    new JoystickButton(controller1, 5).toggleOnTrue(zeroheading);//this line replaces the above
     new JoystickButton(controller1, 1).toggleOnTrue(align);
     new JoystickButton(controller1, 6).whileTrue(LRshoot);
     new JoystickButton(controller2, 1).whileTrue(Speaker1);
