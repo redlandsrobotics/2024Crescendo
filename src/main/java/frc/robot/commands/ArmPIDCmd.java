@@ -24,7 +24,6 @@ public class ArmPIDCmd extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("Arm PID running");
     pidController.reset();
   }
 
@@ -33,14 +32,12 @@ public class ArmPIDCmd extends Command {
   public void execute() {
     double speed = pidController.calculate(armSubsystem.getDistance());
     armSubsystem.set(speed);
-    System.out.println(speed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     armSubsystem.set(0.0);
-    System.out.println("end PID cmd");
   }
 
   // Returns true when the command should end.

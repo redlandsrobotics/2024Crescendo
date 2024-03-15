@@ -40,8 +40,8 @@ public class SwerveJoystickCmd extends Command{
     @Override
     public void execute(){
         //inputs
-        double xSpeed = xSpdFunction.get();
-        double ySpeed = ySpdFunction.get();
+        double xSpeed = xSpdFunction.get()*4;
+        double ySpeed = ySpdFunction.get()*4;
         double turningSpeed = turningSpdFunction.get();
 
         //limit speed or smt
@@ -56,8 +56,8 @@ public class SwerveJoystickCmd extends Command{
         //make drive smooth :D
         xSpeed = xLimiter.calculate(xSpeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
         ySpeed = yLimiter.calculate(ySpeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
-        // turningSpeed = turningLimiter.calculate(turningSpeed) * DriveConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
-        turningSpeed = turningLimiter.calculate(turningSpeed);
+        turningSpeed = turningLimiter.calculate(turningSpeed) * DriveConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
+        //turningSpeed = turningLimiter.calculate(turningSpeed);
 
 
         // //comment

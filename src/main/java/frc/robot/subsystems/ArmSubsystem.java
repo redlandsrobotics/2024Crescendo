@@ -6,18 +6,25 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.ctre.phoenix6.configs.*;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import com.ctre.phoenix6.hardware.core.CoreTalonFX;
 
 
 public class ArmSubsystem extends SubsystemBase {
   
   public TalonFX left = new TalonFX(1);
   public TalonFX right = new TalonFX(0);
+
+
+
+
 
   DutyCycleEncoder encoder = new DutyCycleEncoder(0);
 
@@ -83,6 +90,9 @@ public class ArmSubsystem extends SubsystemBase {
   /** Creates a new ArmSubsystem. */
   public ArmSubsystem() {
     // Use addRequirements() here to declare subsystem dependencies.
+    left.setNeutralMode(NeutralModeValue.Brake);
+    right.setNeutralMode(NeutralModeValue.Brake);
+
   }
 
   @Override 

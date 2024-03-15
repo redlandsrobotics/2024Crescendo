@@ -25,7 +25,7 @@ public final class Constants {
     public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
     public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
     public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
-    public static final double kPTurning = 0.4; // tune later
+    public static final double kPTurning = 0.7; // tune later
 
 }
 
@@ -95,14 +95,14 @@ public static final class DriveConstants {
     public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0.510029354978664;
     public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 1.3559470393253346;
 
-    public static final double kPhysicalMaxSpeedMetersPerSecond = 4.5;//might need to update
-    public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 0.25  * Math.PI;//might need to ypdate
+    public static final double kPhysicalMaxSpeedMetersPerSecond = 25;//might need to update
+    public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 12  * Math.PI;//might need to ypdate
 
     public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 4;
     public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = 
             kPhysicalMaxAngularSpeedRadiansPerSecond / 4;
-    public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 5 ;
-    public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 7;
+    public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 7;
+    public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 18;
 }
 
 public static final class ArmConstants {
@@ -111,12 +111,12 @@ public static final class ArmConstants {
     public static final double kI = 0.6;
     public static final double kD = 0.0;
     public static final double Amp = 0.46;
-    public static final double Source = 0.48;
+    public static final double Source = 0.415;
     public static final double Stow = 0.30;
-    public static final double pos1 = 0.35;
-    public static final double pos2 = 0.35;
-    public static final double pos3 = 0.35;
-    public static final double pos4 = 0.35;
+    public static final double pos1 = 0.475;
+    public static final double pos2 = 0.445;
+    public static final double pos3 = 0.425;
+    public static final double pos4 = 0.4116;
 }
 
 
