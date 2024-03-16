@@ -19,6 +19,7 @@ import frc.robot.commands.ShootCmd;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.ZeroHeadingCmd;
 import frc.robot.Constants.ArmConstants;
+import frc.robot.commands.AutoShootCmd;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
@@ -81,6 +82,10 @@ public class RobotContainer {
 
     arm.setDefaultCommand(new ArmCmd(arm, () -> controller2.getRawAxis(1)));
     shooter.setDefaultCommand(new ShootCmd(shooter,  () -> controller1.getRawAxis(3), () -> controller1.getRawAxis(2)));
+    NamedCommands.registerCommand("pos1", new ArmPIDCmd(arm, ArmConstants.pos1));
+    NamedCommands.registerCommand("stow", new ArmPIDCmd(arm, ArmConstants.Stow));
+    NamedCommands.registerCommand("shoot", new AutoShootCmd(shooter));
+    NamedCommands.registerCommand("LRShoot", new LRShootCmd(shooter));
 
     configureBindings();
   }
@@ -122,7 +127,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-      return new PathPlannerAuto("New Auto");
+      return new PathPlannerAuto("TestAuto");
       
 
   }

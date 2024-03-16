@@ -106,9 +106,8 @@ public static final class DriveConstants {
 }
 
 public static final class ArmConstants {
-    public static final double kP = 2.5
-    ;
-    public static final double kI = 0.6;
+    public static final double kP = 2;
+    public static final double kI = 0.125;
     public static final double kD = 0.0;
     public static final double Amp = 0.46;
     public static final double Source = 0.415;
