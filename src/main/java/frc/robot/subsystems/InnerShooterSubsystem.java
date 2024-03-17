@@ -19,35 +19,35 @@ import com.revrobotics.SparkAnalogSensor;
 import com.revrobotics.SparkPIDController;
 import java.util.function.Supplier;
 
-public class ShooterSubsystem extends SubsystemBase {
+public class InnerShooterSubsystem extends SubsystemBase {
   /** Creates a new ShooterSubsystem. */
 
-  public CANSparkFlex top = new CANSparkFlex(9, MotorType.kBrushless);
-  public CANSparkFlex bottom = new CANSparkFlex(10, MotorType.kBrushless);
+  public CANSparkMax left = new CANSparkMax(12, MotorType.kBrushless);
+  public CANSparkMax right = new CANSparkMax(11, MotorType.kBrushless);
+
+  public InnerShooterSubsystem() {}
 
 
-  public ShooterSubsystem() {}
 
-  public void shoot()
+  public void LRshoot()
   {
-    top.set(0.75); // to be tuned later
-    bottom.set(-0.75); // to be tuned later
+    left.set(-0.75);
+    right.set(0.75);
   }
 
-
-
-  public void intake()
+  public void LRIntake()
   {
-    top.set(-0.2); // to be tuned later
-    bottom.set(0.2); // to be tuned later
-
+    left.set(0.3);
+    right.set(-0.3);
   }
 
-  public void stop()
+  public void LRstop()
   {
-    top.set(0.0);
-    bottom.set(0.0);
+    left.set(0.0);
+    right.set(0.0);
   }
+
+  
 
   @Override
   public void periodic() 

@@ -25,6 +25,7 @@ public class ArmPIDCmd extends Command {
   @Override
   public void initialize() {
     pidController.reset();
+    System.out.println("ARMPID running");
   }
 
   // Called every time the scheduler runs while the command is scheduled.

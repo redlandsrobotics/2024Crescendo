@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.6926215218890064,
-      "y": 1.3767143062236433
+      "x": 1.45,
+      "y": 1.5
     },
-    "rotation": 0
+    "rotation": 0.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Rest + Exit 1"
+            "pathName": "ExitAuto"
           }
         }
       ]

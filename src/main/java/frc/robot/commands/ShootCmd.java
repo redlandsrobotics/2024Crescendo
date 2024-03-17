@@ -48,10 +48,12 @@ public class ShootCmd extends Command {
     else if(realTimeSpeed2 > 0.05)
     {
       RobotContainer.shooter.intake();
+      RobotContainer.innerShooter.LRIntake();
     }
     else
     {
       RobotContainer.shooter.stop();
+      RobotContainer.innerShooter.LRstop();
     }
    
   }
@@ -60,6 +62,7 @@ public class ShootCmd extends Command {
   @Override
   public void end(boolean interrupted) {
     RobotContainer.shooter.stop();
+    RobotContainer.innerShooter.LRstop();;
   }
 
   // Returns true when the command should end.

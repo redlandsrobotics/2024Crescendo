@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.InnerShooterSubsystem;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -15,8 +16,8 @@ import java.util.function.Supplier;
 
 public class LRShootCmd extends Command {
   /** Creates a new ShootCmd. */
-  private final ShooterSubsystem m_subsystem;
-    public LRShootCmd(ShooterSubsystem subsystem)
+  private final InnerShooterSubsystem m_subsystem;
+    public LRShootCmd(InnerShooterSubsystem subsystem)
     {
       m_subsystem = subsystem;
       addRequirements(subsystem);
@@ -32,7 +33,7 @@ public class LRShootCmd extends Command {
   @Override
   public void execute(){
     
-          RobotContainer.shooter.LRshoot();
+          RobotContainer.innerShooter.LRshoot();
      
   }
 

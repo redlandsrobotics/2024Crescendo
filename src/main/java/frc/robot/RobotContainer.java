@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.InnerShooterSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveModule;
 import frc.robot.subsystems.SwerveSubsystem;
@@ -13,7 +14,6 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ArmCmd;
 import frc.robot.commands.AutoAlignCmd;
 import frc.robot.commands.ArmPIDCmd;
-import frc.robot.commands.IntakeCmd;
 import frc.robot.commands.LRShootCmd;
 import frc.robot.commands.ShootCmd;
 import frc.robot.commands.SwerveJoystickCmd;
@@ -46,12 +46,13 @@ public class RobotContainer {
   public static VisionSubsystem vision = new VisionSubsystem();
   public static ShooterSubsystem shooter = new ShooterSubsystem();
   public static ArmSubsystem arm = new ArmSubsystem();
+  public static InnerShooterSubsystem innerShooter = new InnerShooterSubsystem();
   
 
   //commands
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
   private static AutoAlignCmd align = new AutoAlignCmd(swerveSubsystem);
-  private static LRShootCmd LRshoot = new LRShootCmd(shooter);
+  private static LRShootCmd LRshoot = new LRShootCmd(innerShooter);
   private static ArmPIDCmd Amp = new ArmPIDCmd(arm, ArmConstants.Amp);
   private static ArmPIDCmd Stow = new ArmPIDCmd(arm, ArmConstants.Stow);
   private static ArmPIDCmd Source = new ArmPIDCmd(arm, ArmConstants.Source);
@@ -85,7 +86,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("pos1", new ArmPIDCmd(arm, ArmConstants.pos1));
     NamedCommands.registerCommand("stow", new ArmPIDCmd(arm, ArmConstants.Stow));
     NamedCommands.registerCommand("shoot", new AutoShootCmd(shooter));
-    NamedCommands.registerCommand("LRShoot", new LRShootCmd(shooter));
+    NamedCommands.registerCommand("LRShoot", new LRShootCmd(innerShooter));
 
     configureBindings();
   }
