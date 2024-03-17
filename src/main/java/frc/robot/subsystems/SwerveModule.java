@@ -57,10 +57,10 @@ public class SwerveModule extends SubsystemBase {
 		turningEncoder.setPositionConversionFactor(ModuleConstants.kTurningEncoderRot2Rad);
 		turningEncoder.setVelocityConversionFactor(ModuleConstants.kTurningEncoderRPM2RadPerSec);
 	
-		turningPidController = new PIDController(ModuleConstants.kPTurning, 0, 0);
+		turningPidController = new PIDController(ModuleConstants.kPTurning, ModuleConstants.kITurning, 0);
     turningPidController.enableContinuousInput(-Math.PI, Math.PI );
     
-    drivePidController = new PIDController(0.75, 0, 0);
+    drivePidController = new PIDController(0.75, 1.5, 0);
 
     //resetEncoders();
 	}
@@ -119,7 +119,7 @@ public class SwerveModule extends SubsystemBase {
   }
 
   public SwerveModulePosition getPosition() {
-	return new SwerveModulePosition(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad())/*new Rotation2d(getTurningPosition())*/);//switch between neo encoders and abs encoders
+	return new SwerveModulePosition(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad()/*new Rotation2d(getTurningPosition())*/));//switch between neo encoders and abs encoders
   }
 
   public void setDesiredState(SwerveModuleState state) {
@@ -189,6 +189,7 @@ public class SwerveModule extends SubsystemBase {
     @Override
     public void periodic() {
       // This method will be called once per scheduler run
+
     }
   
     @Override

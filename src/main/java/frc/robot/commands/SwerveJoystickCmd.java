@@ -79,7 +79,8 @@ public class SwerveJoystickCmd extends Command{
         //      * 3. swerveSubsystem.getRotation2d(): gyro angle
         //      * */ 
             SmartDashboard.putBoolean("field oreinted", true);
-            chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
+           // chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
+           chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(2, 0, 0, swerveSubsystem.getRotation2d());
         } 
         else {
             SmartDashboard.putBoolean("field oreinted", false);

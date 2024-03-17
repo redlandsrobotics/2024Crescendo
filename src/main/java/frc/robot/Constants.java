@@ -25,7 +25,8 @@ public final class Constants {
     public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
     public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
     public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
-    public static final double kPTurning = 0.7; // tune later
+    public static final double kPTurning = 1; // tune later
+    public static final double kITurning = 0;
 
 }
 
@@ -67,9 +68,9 @@ public static final class DriveConstants {
     public static final int kFrontRightTurningMotorPort = 4;
     public static final int kBackRightTurningMotorPort = 2;
 
-    public static final boolean kFrontLeftTurningEncoderReversed = true;
-    public static final boolean kBackLeftTurningEncoderReversed = true;
-    public static final boolean kFrontRightTurningEncoderReversed = true;
+    public static final boolean kFrontLeftTurningEncoderReversed = true; 
+    public static final boolean kBackLeftTurningEncoderReversed = true; 
+    public static final boolean kFrontRightTurningEncoderReversed = true; 
     public static final boolean kBackRightTurningEncoderReversed = true;
 
     public static final boolean kFrontLeftDriveEncoderReversed = true; //cheeck these for tuning drive
@@ -90,6 +91,13 @@ public static final class DriveConstants {
 
    // need to update 
    //below one is only a placeholder!
+   /**
+    *   public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0.2151334967421201;
+    public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 2.024245872251926;
+    public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0.7045035029354978664;
+    public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 1.3559470393253346;
+
+    */
     public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0.2151334967421201;
     public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 2.024245872251926;
     public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0.510029354978664;
