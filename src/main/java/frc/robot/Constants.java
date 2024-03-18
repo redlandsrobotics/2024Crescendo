@@ -134,10 +134,10 @@ public static final class OIConstants {
     //update below
     public static final int kDriverYAxis = 1;
     public static final int kDriverXAxis = 0;
-    public static final int kDriverRotAxis = 4;
-    public static final int kDriverFieldOrientedButtonIdx = 2; // is B on controller
+    public static final int kDriverRotAxis = 2;
+    public static final int kDriverFieldOrientedButtonIdx = 10; // is options on controller
 
-    public static final double kDeadband = 0.1;
+    public static final double kDeadband = 0.3;//increase deadband to make drive more smooth
 }
 
 public static final class OIAutoConstants {
@@ -146,12 +146,5 @@ public static final class OIAutoConstants {
     public static final double TurningD = 5;
 }
 
-// Abhinav Pidaparthi
-//test
-//test 3
 
-// Ethan Riggins - test comment
-// Danielle jeon - test comment: i am racist
-// test comment
-// hello
 }

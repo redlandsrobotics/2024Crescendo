@@ -68,10 +68,9 @@ public class RobotContainer {
   
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  XboxController controller1 = new XboxController(Constants.OIConstants.kDriverControllerPort);
+  //XboxController controller1 = new XboxController(Constants.OIConstants.kDriverControllerPort);
   XboxController controller2 = new XboxController(1);
-  //PS5Controller controller2 = new PS5Controller(Constants.OIConstants.kDriverControllerPort);
-
+  PS5Controller controller1 = new PS5Controller(Constants.OIConstants.kDriverControllerPort);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -84,7 +83,7 @@ public class RobotContainer {
        () ->!controller1.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)));
 
     arm.setDefaultCommand(new ArmCmd(arm, () -> controller2.getRawAxis(1)));
-    shooter.setDefaultCommand(new ShootCmd(shooter,  () -> controller1.getRawAxis(3), () -> controller1.getRawAxis(2)));
+    shooter.setDefaultCommand(new ShootCmd(shooter,  () -> controller1.getRawAxis(4), () -> controller1.getRawAxis(3)));
     NamedCommands.registerCommand("pos1", new ArmPIDCmd(arm, ArmConstants.pos1));
     NamedCommands.registerCommand("stow", new ArmPIDCmd(arm, ArmConstants.Stow));
     NamedCommands.registerCommand("shoot", new AutoShootCmd(shooter));
@@ -106,7 +105,7 @@ public class RobotContainer {
     // joystick 1
     //new JoystickButton(controller1, 5).onTrue(zeroheading);
     new JoystickButton(controller1, 5).toggleOnTrue(zeroheading);//this line replaces the above
-    new JoystickButton(controller1, 1).toggleOnTrue(align);
+    //new JoystickButton(controller1, 1).toggleOnTrue(align);
     new JoystickButton(controller1, 6).whileTrue(LRshoot);
     new JoystickButton(controller2, 1).whileTrue(Speaker1);
     new JoystickButton(controller2,2 ).whileTrue(Speaker2);

@@ -44,7 +44,7 @@ public class SwerveJoystickCmd extends Command{
         double ySpeed = ySpdFunction.get()*4;
         double turningSpeed = turningSpdFunction.get();
 
-        //limit speed or smt
+        
         xSpeed = Math.abs(xSpeed) > OIConstants.kDeadband ? xSpeed : 0.0;
         ySpeed = Math.abs(ySpeed) > OIConstants.kDeadband ? ySpeed : 0.0;
         turningSpeed = Math.abs(turningSpeed) > OIConstants.kDeadband ? turningSpeed : 0.0;
@@ -53,7 +53,7 @@ public class SwerveJoystickCmd extends Command{
         // System.out.println(ySpeed);
         // System.out.println(turningSpeed);
 
-        //make drive smooth :D
+        //make drive smooth 
         xSpeed = xLimiter.calculate(xSpeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
         ySpeed = yLimiter.calculate(ySpeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
         turningSpeed = turningLimiter.calculate(turningSpeed) * DriveConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
@@ -79,8 +79,8 @@ public class SwerveJoystickCmd extends Command{
         //      * 3. swerveSubsystem.getRotation2d(): gyro angle
         //      * */ 
             SmartDashboard.putBoolean("field oreinted", true);
-           // chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
-           chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(2, 0, 0, swerveSubsystem.getRotation2d());
+            chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
+           //chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(2, 0, 0, swerveSubsystem.getRotation2d());
         } 
         else {
             SmartDashboard.putBoolean("field oreinted", false);
