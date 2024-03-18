@@ -26,6 +26,7 @@ import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.path.PathPlannerPath;
 
+import edu.wpi.first.wpilibj.PS5Controller;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -69,6 +70,7 @@ public class RobotContainer {
   // Replace with CommandPS4Controller or CommandJoystick if needed
   XboxController controller1 = new XboxController(Constants.OIConstants.kDriverControllerPort);
   XboxController controller2 = new XboxController(1);
+  //PS5Controller controller2 = new PS5Controller(Constants.OIConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
