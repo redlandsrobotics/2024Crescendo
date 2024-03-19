@@ -136,7 +136,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     
 
-    PathPlannerAuto path = paths.getSelected();
+    PathPlannerAuto path = Robot.paths.getSelected();
 
     return path;   
 
