@@ -52,8 +52,8 @@ public class RobotContainer {
   public static ArmSubsystem arm = new ArmSubsystem();
   public static InnerShooterSubsystem innerShooter = new InnerShooterSubsystem();
   
-  //auto sendable chooser
-  SendableChooser<PathPlannerAuto> paths = new SendableChooser<PathPlannerAuto>();
+
+  
 
   //commands
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
@@ -134,18 +134,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    //red autos
-    paths.addOption("OR-A", new PathPlannerAuto("OR_AutoA"));
-    paths.addOption("OR-B", new PathPlannerAuto("OR_AutoB"));
-    paths.addOption("OR-C", new PathPlannerAuto("OR_AutoC"));
-    paths.addOption("OR-Exit", new PathPlannerAuto("OR_ExitAuto"));
-
-    paths.addOption("OB-A", new PathPlannerAuto("OB_AutoA"));
-    paths.addOption("OB-B", new PathPlannerAuto("OB_AutoB"));
-    paths.addOption("OB-C", new PathPlannerAuto("OB_AutoC"));
-    paths.addOption("OB-Exit", new PathPlannerAuto("OB_ExitAuto"));
-
-    SmartDashboard.putData(paths);
+    
 
     PathPlannerAuto path = paths.getSelected();
 

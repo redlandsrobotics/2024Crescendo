@@ -4,7 +4,11 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.commands.PathPlannerAuto;
+
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.ArmSubsystem;
@@ -22,6 +26,8 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
+  public static SendableChooser<PathPlannerAuto> paths = new SendableChooser<PathPlannerAuto>();
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -30,7 +36,20 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();  
+    m_robotContainer = new RobotContainer(); 
+    
+    //red autos
+    paths.addOption("OR-A", new PathPlannerAuto("OR_AutoA"));
+    paths.addOption("OR-B", new PathPlannerAuto("OR_AutoB"));
+    paths.addOption("OR-C", new PathPlannerAuto("OR_AutoC"));
+    paths.addOption("OR-Exit", new PathPlannerAuto("OR_ExitAuto"));
+
+    paths.addOption("OB-A", new PathPlannerAuto("OB_AutoA"));
+    paths.addOption("OB-B", new PathPlannerAuto("OB_AutoB"));
+    paths.addOption("OB-C", new PathPlannerAuto("OB_AutoC"));
+    paths.addOption("OB-Exit", new PathPlannerAuto("OB_ExitAuto"));
+
+    SmartDashboard.putData(paths);
     
   }
 
