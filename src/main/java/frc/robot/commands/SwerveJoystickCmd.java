@@ -42,7 +42,7 @@ public class SwerveJoystickCmd extends Command{
         //inputs
         double xSpeed = xSpdFunction.get()*4;
         double ySpeed = ySpdFunction.get()*4;
-        double turningSpeed = turningSpdFunction.get();
+        double turningSpeed = turningSpdFunction.get()*0.825;
 
         
         xSpeed = Math.abs(xSpeed) > OIConstants.kDeadband ? xSpeed : 0.0;
@@ -79,8 +79,8 @@ public class SwerveJoystickCmd extends Command{
         //      * 3. swerveSubsystem.getRotation2d(): gyro angle
         //      * */ 
             SmartDashboard.putBoolean("field oreinted", true);
-            chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
-           //chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(2, 0, 0, swerveSubsystem.getRotation2d());
+           chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());
+           //chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(-0.2, 0, 0, swerveSubsystem.getRotation2d());
         } 
         else {
             SmartDashboard.putBoolean("field oreinted", false);

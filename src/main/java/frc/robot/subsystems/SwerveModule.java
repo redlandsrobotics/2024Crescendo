@@ -60,7 +60,7 @@ public class SwerveModule extends SubsystemBase {
 		turningPidController = new PIDController(ModuleConstants.kPTurning, ModuleConstants.kITurning, 0);
     turningPidController.enableContinuousInput(-Math.PI, Math.PI );
     
-    drivePidController = new PIDController(0.75, 1.5, 0);
+    drivePidController = new PIDController(0.75,1.5, 0);
 
     //resetEncoders();
 	}
@@ -115,11 +115,12 @@ public class SwerveModule extends SubsystemBase {
   }
 
   public SwerveModuleState getState() {
-    return new SwerveModuleState(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad())/*new Rotation2d(getTurningPosition())*/);//switch between neo encoders and abs encoders
+    return new SwerveModuleState(getDriveVelocity(),   new Rotation2d(getAbsoluteEncoderRad())); /*new Rotation2d(getTurningPosition()));//switch between neo encoders and abs encoders
+*/
   }
 
   public SwerveModulePosition getPosition() {
-	return new SwerveModulePosition(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad()/*new Rotation2d(getTurningPosition())*/));//switch between neo encoders and abs encoders
+	return new SwerveModulePosition(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad())/*new Rotation2d(getTurningPosition())*/);//switch between neo encoders and abs encoders
   }
 
   public void setDesiredState(SwerveModuleState state) {

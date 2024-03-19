@@ -111,8 +111,8 @@ public class SwerveSubsystem extends SubsystemBase {
                 this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
                 this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
                 new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-                        new PIDConstants(2.1, 0.2, 0.1), // Translation PID constants
-                        new PIDConstants(0.0, 0.0, 0.0), // Rotation PID constants
+                        new PIDConstants(2.0, 0.2, 0.1), // Translation PID constants
+                        new PIDConstants(0.5, 1.0 , 0.0), // Rotation PID constants
                         4.5, // Max module speed, in m/s
                         0.3556, // Drive base radius in meters. Distance from robot center to furthest module.
                         new ReplanningConfig() // Default path replanning config. See the API for the options here
@@ -191,10 +191,10 @@ public class SwerveSubsystem extends SubsystemBase {
     
 
     public void getSpeeds() {
-        SmartDashboard.putNumber("FrontLeft Drive Speed", frontLeft.getDriveVelocity());
-        SmartDashboard.putNumber("frontRight Drive Speed", frontRight.getDriveVelocity());
-        SmartDashboard.putNumber("backLeft Drive Speed", backLeft.getDriveVelocity());
-        SmartDashboard.putNumber("backRight Drive Speed", backRight.getDriveVelocity());
+        SmartDashboard.putNumber("FrontLeft Drive Speed", frontLeft.getTurningVelocity());
+        SmartDashboard.putNumber("frontRight Drive Speed", frontRight.getTurningVelocity());
+        SmartDashboard.putNumber("backLeft Drive Speed", backLeft.getTurningVelocity());
+        SmartDashboard.putNumber("backRight Drive Speed", backRight.getTurningVelocity());
     }
 
     public double[] getEncoders() {
@@ -307,7 +307,7 @@ public class SwerveSubsystem extends SubsystemBase {
         odometer.update(getRotation2d() , getModulePositions()); //in case of odomoter problems check this first for debug
             //  SmartDashboard.putNumber("Robot Heading", getHeading());
             //  SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
-             // getVoltages();
+              //getVoltages();
               //getSpeeds();
              // getEncoders();
         SmartDashboard.putNumber("Gyro Heading", getHeading());
@@ -316,14 +316,14 @@ public class SwerveSubsystem extends SubsystemBase {
         //SmartDashboard.putNumber("FL | ",  frontLeft.getAbsoluteEncoderRad());
   
         // System.out.println("FR | " + frontRight.returnVoltage());
-        //SmartDashboard.putNumber("FR | ", frontRight.getAbsoluteEncoderRad());
+       // SmartDashboard.putNumber("FR | ", frontRight.getAbsoluteEncoderRad());
 
         // System.out.println("BL | " + backLeft.returnVoltage());
-        //SmartDashboard.putNumber("BL | ", backLeft.getAbsoluteEncoderRad());
-    //    System.out.println("FR | " + frontRight.getAbsoluteEncoderRad());
-    //    System.out.println("BR | " + backRight.getAbsoluteEncoderRad());
-    //     System.out.println("FL | " + frontLeft.getAbsoluteEncoderRad());
-    //     System.out.println("BL | " + backLeft.getAbsoluteEncoderRad());
+    //     SmartDashboard.putNumber("BL | ", backLeft.getAbsoluteEncoderRad());
+      //  System.out.println("FR | " + frontRight.getAbsoluteEncoderRad());
+       System.out.println("BR | " + backRight.getAbsoluteEncoderRad());
+         //System.out.println("FL | " + frontLeft.getAbsoluteEncoderRad());
+         //System.out.println("BL | " + backLeft.getAbsoluteEncoderRad());
         // System.out.println("BR | " + backRight.returnVoltage());
         //SmartDashboard.putNumber("BR | ", backRight.getAbsoluteEncoderRad());
         // System.out.println("FL |" + frontLeft.getTurningPosition());

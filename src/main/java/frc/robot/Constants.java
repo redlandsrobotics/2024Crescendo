@@ -25,7 +25,7 @@ public final class Constants {
     public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
     public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
     public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
-    public static final double kPTurning = 1; // tune later
+    public static final double kPTurning = 0.25; // tune later
     public static final double kITurning = 0;
 
 }
@@ -98,27 +98,27 @@ public static final class DriveConstants {
     public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 1.3559470393253346;
 
     */
-    public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0.2151334967421201;
-    public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 2.024245872251926;
-    public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0.59529354978664;
-    public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 1.3559470393253346;
+    public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0.24247365501722645;
+    public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 2.0388805416133753;
+    public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 2.5262100016265356;
+    public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 4.368813175412452;
 
-    public static final double kPhysicalMaxSpeedMetersPerSecond = 25;//might need to update
-    public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 12  * Math.PI;//might need to ypdate
+    public static final double kPhysicalMaxSpeedMetersPerSecond = 4;//might need to update
+    public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2  * Math.PI;//might need to ypdate
 
     public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 4;
     public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = 
             kPhysicalMaxAngularSpeedRadiansPerSecond / 4;
     public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 7;
-    public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 18;
+    public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 9;
 }
 
 public static final class ArmConstants {
     public static final double kP = 2;
     public static final double kI = 0.125;
     public static final double kD = 0.0;
-    public static final double Amp = 0.46;
-    public static final double Source = 0.415;
+    public static final double Amp = 0.70;
+    public static final double Source = 0.45;
     public static final double Stow = 0.30;
     public static final double pos1 = 0.475;
     public static final double pos2 = 0.445;
