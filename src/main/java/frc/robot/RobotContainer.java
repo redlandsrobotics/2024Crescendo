@@ -30,6 +30,7 @@ import edu.wpi.first.wpilibj.PS5Controller;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.SendableCameraWrapper;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -51,6 +52,8 @@ public class RobotContainer {
   public static ArmSubsystem arm = new ArmSubsystem();
   public static InnerShooterSubsystem innerShooter = new InnerShooterSubsystem();
   
+  //auto sendable chooser
+  SendableChooser<PathPlannerAuto> paths = new SendableChooser<PathPlannerAuto>();
 
   //commands
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
@@ -63,17 +66,6 @@ public class RobotContainer {
   private static ArmPIDCmd Speaker2 = new ArmPIDCmd(arm, ArmConstants.pos2);
   private static ArmPIDCmd Speaker3 = new ArmPIDCmd(arm, ArmConstants.pos3);
   private static ArmPIDCmd Speaker4 = new ArmPIDCmd(arm, ArmConstants.pos4);
-  private SendableChooser<Integer> m_chooser = new SendableChooser<>();
-  private double[] TestAuto;
-  private double[] TestAuto1;
-  private double[] BlueA;
-  private double[] BlueB;
-  private double[] BlueC;
-  private double[] BlueExit;
-  private double[] RedA;
-  private double[] RedB;
-  private double[] RedC;
-  private double[] RedExit;
 
 
 
@@ -142,9 +134,22 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    return new PathPlannerAuto("OR_AutoB");
-      
+    //red autos
+    paths.addOption("OR-A", new PathPlannerAuto("OR_AutoA"));
+    paths.addOption("OR-B", new PathPlannerAuto("OR_AutoB"));
+    paths.addOption("OR-C", new PathPlannerAuto("OR_AutoC"));
+    paths.addOption("OR-Exit", new PathPlannerAuto("OR_ExitAuto"));
+
+    paths.addOption("OB-A", new PathPlannerAuto("OB_AutoA"));
+    paths.addOption("OB-B", new PathPlannerAuto("OB_AutoB"));
+    paths.addOption("OB-C", new PathPlannerAuto("OB_AutoC"));
+    paths.addOption("OB-Exit", new PathPlannerAuto("OB_ExitAuto"));
+
+    SmartDashboard.putData(paths);
+
+    PathPlannerAuto path = paths.getSelected();
+
+    return path;   
 
   }
 }
