@@ -40,8 +40,8 @@ public class SwerveJoystickCmd extends Command{
     @Override
     public void execute(){
         //inputs
-        double xSpeed = xSpdFunction.get()*4;
-        double ySpeed = ySpdFunction.get()*4;
+        double xSpeed = xSpdFunction.get()*4.5;
+        double ySpeed = ySpdFunction.get()*4.5;
         double turningSpeed = turningSpdFunction.get()*0.825;
 
         
