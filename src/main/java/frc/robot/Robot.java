@@ -48,6 +48,7 @@ public class Robot extends TimedRobot {
     paths.addOption("OB-B", new PathPlannerAuto("OB_AutoB"));
     paths.addOption("OB-C", new PathPlannerAuto("OB_AutoC"));
     paths.addOption("OB-Exit", new PathPlannerAuto("OB_ExitAuto"));
+    paths.addOption("Test", new PathPlannerAuto("ATest"));
 
     SmartDashboard.putData(paths);
     
