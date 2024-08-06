@@ -111,7 +111,7 @@ public class SwerveSubsystem extends SubsystemBase {
                 this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
                 this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
                 new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-                        new PIDConstants(0, 0, 0), // Translation PID constants
+                        new PIDConstants(0.0, 0, 0), // Translation PID constants
                         new PIDConstants(0.5, 1.0 , 0.0), // Rotation PID constants
                         4.5, // Max module speed, in m/s
                         0.3556, // Drive base radius in meters. Distance from robot center to furthest module.
@@ -313,19 +313,19 @@ public class SwerveSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Gyro Heading", getHeading());
         // System.out.printsqtln("test");
         // System.out.println("FL | " + frontLeft.returnVoltage());
-        //SmartDashboard.putNumber("FL | ",  frontLeft.getAbsoluteEncoderRad());
+        // SmartDashboard.putNumber("FL | ",  frontLeft.getAbsoluteEncoderRad());
   
         // System.out.println("FR | " + frontRight.returnVoltage());
-       // SmartDashboard.putNumber("FR | ", frontRight.getAbsoluteEncoderRad());
+    //    SmartDashboard.putNumber("FR | ", frontRight.getAbsoluteEncoderRad());
 
         // System.out.println("BL | " + backLeft.returnVoltage());
-    //     SmartDashboard.putNumber("BL | ", backLeft.getAbsoluteEncoderRad());
-      //  System.out.println("FR | " + frontRight.getAbsoluteEncoderRad());
-       //System.out.println("BR | " + backRight.getAbsoluteEncoderRad());
-         //System.out.println("FL | " + frontLeft.getAbsoluteEncoderRad());
-         //System.out.println("BL | " + backLeft.getAbsoluteEncoderRad());
+        // SmartDashboard.putNumber("BL | ", backLeft.getAbsoluteEncoderRad());
+       System.out.println("FR | " + frontRight.getAbsoluteEncoderRad());
+       System.out.println("BR | " + backRight.getAbsoluteEncoderRad());
+         System.out.println("FL | " + frontLeft.getAbsoluteEncoderRad());
+         System.out.println("BL | " + backLeft.getAbsoluteEncoderRad());
         // System.out.println("BR | " + backRight.returnVoltage());
-        //SmartDashboard.putNumber("BR | ", backRight.getAbsoluteEncoderRad());
+        // SmartDashboard.putNumber("BR | ", backRight.getAbsoluteEncoderRad());
         // System.out.println("FL |" + frontLeft.getTurningPosition());
         // System.out.println("RL |" + frontRight.getTurningPosition());
         // System.out.println("BL |" + backLeft.getTurningPosition());

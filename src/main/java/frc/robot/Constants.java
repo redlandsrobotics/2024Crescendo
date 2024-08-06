@@ -25,7 +25,7 @@ public final class Constants {
     public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
     public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
     public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
-    public static final double kPTurning = 0.25; // tune later
+    public static final double kPTurning = 1; // tune later
     public static final double kITurning = 0;
 
 }
@@ -98,10 +98,10 @@ public static final class DriveConstants {
     public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 1.3559470393253346;
 
     */
-    public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0.24247365501722645;
-    public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 2.0388805416133753;
-    public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 2.5262100016265356;
-    public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 4.368813175412452;
+    public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 3.760 - Math.PI;
+    public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 0.38 - Math.PI;
+    public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 2.5462100016265356 ;
+    public static final double kBackRightDriveAbsoluteEncoderOffsetRad =  4.30 - Math.PI;
 
     public static final double kPhysicalMaxSpeedMetersPerSecond = 4;//might need to update
     public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2  * Math.PI;//might need to ypdate
@@ -137,7 +137,7 @@ public static final class OIConstants {
     public static final int kDriverRotAxis = 2;
     public static final int kDriverFieldOrientedButtonIdx = 10; // is options on controller
 
-    public static final double kDeadband = 0.3;//increase deadband to make drive more smooth
+    public static final double kDeadband = .5;//increase deadband to make drive more smooth
 }
 
 public static final class OIAutoConstants {

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.45,
-      "y": 1.5
+      "x": 2.0,
+      "y": 2.0
     },
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "command": {
     "type": "sequential",
@@ -15,6 +15,25 @@
           "type": "path",
           "data": {
             "pathName": "ExitAuto"
+          }
+        },
+        {
+          "type": "sequential",
+          "data": {
+            "commands": []
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "deadline",
+                "data": {
+                  "commands": []
+                }
+              }
+            ]
           }
         }
       ]
