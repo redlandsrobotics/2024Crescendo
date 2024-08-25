@@ -16,6 +16,12 @@
           "data": {
             "pathName": "Multi_B_A_a"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Multi_B_A_b"
+          }
         }
       ]
     }
