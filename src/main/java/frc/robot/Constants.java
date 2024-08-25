@@ -25,7 +25,7 @@ public final class Constants {
     public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
     public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
     public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
-    public static final double kPTurning = 1; // tune later
+    public static final double kPTurning = .5; // tune later
     public static final double kITurning = 0;
 
 }
@@ -137,7 +137,7 @@ public static final class OIConstants {
     public static final int kDriverRotAxis = 2;
     public static final int kDriverFieldOrientedButtonIdx = 10; // is options on controller
 
-    public static final double kDeadband = .5;//increase deadband to make drive more smooth
+    public static final double kDeadband = .25;//increase deadband to make drive more smooth
 }
 
 public static final class OIAutoConstants {
