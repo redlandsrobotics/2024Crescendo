@@ -37,10 +37,10 @@ public static final class DriveConstants {
     public static final double kWheelBase = Units.inchesToMeters(28); 
     // Distance between front and back wheels
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
-            new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
-            new Translation2d(-kWheelBase / 2, kTrackWidth / 2),
+            new Translation2d(kWheelBase / 2, kTrackWidth / 2),
             new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
-            new Translation2d(kWheelBase / 2, kTrackWidth / 2));// If wheels have an x shape, then switch the negatives
+            new Translation2d(-kWheelBase / 2, kTrackWidth / 2),
+            new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));// If wheels have an x shape, then switch the negatives
             
     //make sure motors have matching IDs
 
