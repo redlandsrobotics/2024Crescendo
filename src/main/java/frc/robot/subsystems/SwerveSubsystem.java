@@ -86,7 +86,7 @@ public class SwerveSubsystem extends SubsystemBase {
     //private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics,
                // new Rotation2d(0));
    // private Pose2d pose = new Pose2d();
-    private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(
+    public final SwerveDriveOdometry odometer = new SwerveDriveOdometry(
                 DriveConstants.kDriveKinematics, gyro.getRotation2d(), getModulePositions(), 
                      new Pose2d()); // might need to change according to docs, check https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-odometry.html
 
@@ -111,7 +111,7 @@ public class SwerveSubsystem extends SubsystemBase {
                 this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
                 this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
                 new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-                        new PIDConstants(0.0, 0, 0), // Translation PID constants
+                        new PIDConstants(0.5, 0, 0), // Translation PID constants
                         new PIDConstants(0.5, 1.0 , 0.0), // Rotation PID constants
                         4.5, // Max module speed, in m/s
                         0.3556, // Drive base radius in meters. Distance from robot center to furthest module.
@@ -260,7 +260,7 @@ public class SwerveSubsystem extends SubsystemBase {
     }
 
     public Rotation2d getRotation2d() {
-        return Rotation2d.fromDegrees(getHeading());
+        return gyro.getRotation2d();
     }
 
      public Pose2d getPose() {
@@ -274,7 +274,7 @@ public class SwerveSubsystem extends SubsystemBase {
     public void resetOdometry(Pose2d pose) {
         // //in case of odomoter problems check this first for debug
              odometer.resetPosition(
-                Rotation2d.fromDegrees(getHeading()),
+                getRotation2d(),
                 new SwerveModulePosition[] {
                     frontLeft.getPosition(),
                     frontRight.getPosition(),
@@ -285,7 +285,7 @@ public class SwerveSubsystem extends SubsystemBase {
          }
 
      
-
+         
 
     public Command exampleMethodCommand() {
         return null;
@@ -306,7 +306,7 @@ public class SwerveSubsystem extends SubsystemBase {
         //PPLibTelemetry newTelemetry = new PPLibTelemetry();
         odometer.update(getRotation2d() , getModulePositions()); //in case of odomoter problems check this first for debug
             //  SmartDashboard.putNumber("Robot Heading", getHeading());
-            //  SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
+            SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
               //getVoltages();
               //getSpeeds();
              // getEncoders();

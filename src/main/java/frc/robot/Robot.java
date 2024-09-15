@@ -7,6 +7,7 @@ package frc.robot;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -25,6 +26,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  
+private final Field2d m_field = new Field2d();
 
   public static SendableChooser<PathPlannerAuto> paths = new SendableChooser<PathPlannerAuto>();
 
@@ -51,7 +54,7 @@ public class Robot extends TimedRobot {
     paths.addOption("Test", new PathPlannerAuto("ATest"));
 
     SmartDashboard.putData(paths);
-    
+    SmartDashboard.putData("Field", m_field);
   }
 
   /**
@@ -68,6 +71,7 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    m_field.setRobotPose(RobotContainer.swerveSubsystem.odometer.getPoseMeters());
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

@@ -42,10 +42,13 @@ public class SwerveModule extends SubsystemBase {
 		this.absoluteEncoderOffsetRad = absoluteEncoderOffset;
 		this.absoluteEncoderReversed = absoluteEncoderReversed;
 		absoluteEncoder = new AnalogInput(absoluteEncoderId);
+    
 	
 		driveMotor = new CANSparkMax(driveMotorId, MotorType.kBrushless);
 		turningMotor = new CANSparkMax(turningMotorId, MotorType.kBrushless);
-	
+	  driveMotor.restoreFactoryDefaults();
+    turningMotor.restoreFactoryDefaults();
+
 		driveMotor.setInverted(driveMotorReversed);
 		turningMotor.setInverted(turningMotorReversed);
 	
@@ -63,6 +66,10 @@ public class SwerveModule extends SubsystemBase {
     drivePidController = new PIDController(0.75,1.5, 0);
 
     //resetEncoders();
+  driveMotor.burnFlash();
+  turningMotor.burnFlash();
+
+
 	}
 
   public void turningtest(){
@@ -120,7 +127,7 @@ public class SwerveModule extends SubsystemBase {
   }
 
   public SwerveModulePosition getPosition() {
-	return new SwerveModulePosition(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad())/*new Rotation2d(getTurningPosition())*/);//switch between neo encoders and abs encoders
+	return new SwerveModulePosition(getDrivePosition(), new Rotation2d(getAbsoluteEncoderRad())/*new Rotation2d(getTurningPosition())*/);//switch between neo encoders and abs encoders
   }
 
   public void setDesiredState(SwerveModuleState state) {
