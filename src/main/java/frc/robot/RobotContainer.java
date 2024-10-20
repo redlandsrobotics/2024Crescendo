@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.GroundIntakeSubsystem;
 import frc.robot.subsystems.InnerShooterSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveModule;
@@ -20,6 +21,7 @@ import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.commands.ZeroHeadingCmd;
 import frc.robot.Constants.ArmConstants;
 import frc.robot.commands.AutoShootCmd;
+
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
@@ -51,6 +53,7 @@ public class RobotContainer {
   public static ShooterSubsystem shooter = new ShooterSubsystem();
   public static ArmSubsystem arm = new ArmSubsystem();
   public static InnerShooterSubsystem innerShooter = new InnerShooterSubsystem();
+  public static GroundIntakeSubsystem groundIntake = new GroundIntakeSubsystem();
   
 
   
@@ -66,6 +69,8 @@ public class RobotContainer {
   private static ArmPIDCmd Speaker2 = new ArmPIDCmd(arm, ArmConstants.pos2);
   private static ArmPIDCmd Speaker3 = new ArmPIDCmd(arm, ArmConstants.pos3);
   private static ArmPIDCmd Speaker4 = new ArmPIDCmd(arm, ArmConstants.pos4);
+
+  
 
 
 
@@ -103,7 +108,7 @@ public class RobotContainer {
    * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary
    * predicate, or via the named factories in {@link
    * edu.wpi.first.wpilibj2.command.button.CommandGenericHID}'s subclasses for {@link
-   * CommandXboxController Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller
+   * CommandXboxController Xbox}/{@link edu.wpi.first.wpilibgit j2.command.button.CommandPS4Controller
    * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
    * joysticks}.
    */

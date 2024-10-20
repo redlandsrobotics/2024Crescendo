@@ -7,9 +7,20 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.revrobotics.CANSparkFlex;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.ctre.phoenix6.configs.*;
+import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
+
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import com.ctre.phoenix6.hardware.core.CoreTalonFX;
 
 public class GroundIntakeSubsystem extends SubsystemBase {
-  public TalonFX motor = new TalonFx(5);
+  public TalonFX motor = new TalonFX(5);
 
   public GroundIntakeSubsystem() {}
   
