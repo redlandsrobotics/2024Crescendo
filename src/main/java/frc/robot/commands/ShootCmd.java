@@ -49,11 +49,14 @@ public class ShootCmd extends Command {
     {
       RobotContainer.shooter.intake();
       RobotContainer.innerShooter.LRIntake();
+      RobotContainer.groundIntake.GroundIntake();
+      
     }
     else
     {
       RobotContainer.shooter.stop();
       RobotContainer.innerShooter.LRstop();
+      RobotContainer.groundIntake.GroundStop();
     }
    
   }
