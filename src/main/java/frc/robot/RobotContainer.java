@@ -22,6 +22,7 @@ import frc.robot.commands.ZeroHeadingCmd;
 import frc.robot.Constants.ArmConstants;
 import frc.robot.commands.AutoShootCmd;
 
+import frc.robot.commands.GIOutputCommand;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
@@ -62,6 +63,7 @@ public class RobotContainer {
   ZeroHeadingCmd zeroheading = new ZeroHeadingCmd(swerveSubsystem);
   private static AutoAlignCmd align = new AutoAlignCmd(swerveSubsystem);
   private static LRShootCmd LRshoot = new LRShootCmd(innerShooter);
+  private static GIOutputCommand GIOutput = new GIOutputCommand(groundIntake);
   private static ArmPIDCmd Amp = new ArmPIDCmd(arm, ArmConstants.Amp);
   private static ArmPIDCmd Stow = new ArmPIDCmd(arm, ArmConstants.Stow);
   private static ArmPIDCmd Source = new ArmPIDCmd(arm, ArmConstants.Source);
@@ -99,7 +101,9 @@ public class RobotContainer {
     NamedCommands.registerCommand("shoot", new AutoShootCmd(shooter));
     NamedCommands.registerCommand("LRShoot", new LRShootCmd(innerShooter));
     NamedCommands.registerCommand("align", new ZeroHeadingCmd(swerveSubsystem));
+    NamedCommands.registerCommand("GIOutput", new GIOutputCommand(groundIntake));
 
+  
     configureBindings();
   }
 
@@ -125,6 +129,8 @@ public class RobotContainer {
     new JoystickButton(controller2, 5).whileTrue(Source);
     new JoystickButton(controller2, 6).whileTrue(Stow);
     new JoystickButton(controller2, 8).whileTrue(Amp);
+    new JoystickButton(controller1, 9).whileTrue(GIOutput);
+
 
     
 

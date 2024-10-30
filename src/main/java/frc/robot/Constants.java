@@ -117,13 +117,13 @@ public static final class ArmConstants {
     public static final double kP = 2;
     public static final double kI = 0.125;
     public static final double kD = 0.0;
-    public static final double Amp = 0.70;
-    public static final double Source = 0.45;
-    public static final double Stow = 0.30;
-    public static final double pos1 = 0.47925;
-    public static final double pos2 = 0.445;
-    public static final double pos3 = 0.425;
-    public static final double pos4 = 0.4116;
+    public static final double Amp = 0.59;
+    public static final double Source = 0.59;
+    public static final double Stow = 0.59;
+    public static final double pos1 = 0.775;
+    public static final double pos2 = 0.75;
+    public static final double pos3 = 0.7135;
+    public static final double pos4 = 0.7095;
 }
 
 
@@ -146,5 +146,8 @@ public static final class OIAutoConstants {
     public static final double TurningD = 5;
 }
 
+public static final class EthansConstants {
+    public static final double speedMultiplier = 1.5;
+}
 
 }

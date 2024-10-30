@@ -12,6 +12,7 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.SwerveModule;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.Constants.EthansConstants;
 
 public class SwerveJoystickCmd extends Command{
     private SwerveSubsystem swerveSubsystem;
@@ -40,9 +41,9 @@ public class SwerveJoystickCmd extends Command{
     @Override
     public void execute(){
         //inputs
-        double xSpeed = xSpdFunction.get();
-        double ySpeed = ySpdFunction.get();
-        double turningSpeed = turningSpdFunction.get()*0.825;
+        double xSpeed = xSpdFunction.get() * EthansConstants.speedMultiplier;
+        double ySpeed = ySpdFunction.get() * EthansConstants.speedMultiplier;
+        double turningSpeed = turningSpdFunction.get();
 
         
         xSpeed = Math.abs(xSpeed) > OIConstants.kDeadband ? xSpeed : 0.0;

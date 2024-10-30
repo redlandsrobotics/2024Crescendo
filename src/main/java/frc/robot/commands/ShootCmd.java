@@ -9,12 +9,18 @@ import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.GroundIntakeSubsystem;
 
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.function.Supplier;
 
+import com.pathplanner.lib.pathfinding.LocalADStar.GridPosition;
+
+import frc.robot.Constants.ArmConstants;;
+
 public class ShootCmd extends Command {
+  
   /** Creates a new ShootCmd. */
   
   private Supplier<Double> speedFunction;
@@ -45,12 +51,18 @@ public class ShootCmd extends Command {
     {
       RobotContainer.shooter.shoot();
     }
-    else if(realTimeSpeed2 > 0.05)
+    else if(realTimeSpeed2 > 0.05 && RobotContainer.arm.getRotation() < 0.65)
     {
       RobotContainer.shooter.intake();
       RobotContainer.innerShooter.LRIntake();
       RobotContainer.groundIntake.GroundIntake();
       
+    }
+    else if (realTimeSpeed2 > 0.05)
+    {
+      RobotContainer.shooter.intake();
+      RobotContainer.innerShooter.LRIntake();
+      RobotContainer.groundIntake.GroundStop();
     }
     else
     {
@@ -65,7 +77,8 @@ public class ShootCmd extends Command {
   @Override
   public void end(boolean interrupted) {
     RobotContainer.shooter.stop();
-    RobotContainer.innerShooter.LRstop();;
+    RobotContainer.innerShooter.LRstop();
+    RobotContainer.groundIntake.GroundStop();
   }
 
   // Returns true when the command should end.

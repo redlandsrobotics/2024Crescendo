@@ -20,18 +20,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.ctre.phoenix6.hardware.core.CoreTalonFX;
 
 public class GroundIntakeSubsystem extends SubsystemBase {
-  public TalonFX motor = new TalonFX(5);
+  public TalonFX motor = new TalonFX(3);
 
   public GroundIntakeSubsystem() {}
   
   public void output()
   {
-    motor.set(0.05);
+    motor.set(-0.3);
   }
 
   public void GroundIntake()
   {
-    motor.set(-0.3);
+    motor.set(0.4);
   }
 
   public void GroundStop()

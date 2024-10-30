@@ -30,14 +30,14 @@ public class ArmSubsystem extends SubsystemBase {
 
   public void up()
   {
-    left.set(-0.1);
-    right.set(0.1);
+    left.set(0.1);
+    right.set(-0.1);
   }
 
   public void down()
   {
-    left.set( 0.1);
-    right.set(-0.1);
+    left.set(-0.1);
+    right.set(0.1);
   }
 
   public void stop()
