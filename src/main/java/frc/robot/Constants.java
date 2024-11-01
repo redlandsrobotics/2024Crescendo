@@ -121,7 +121,7 @@ public static final class ArmConstants {
     public static final double Source = 0.59;
     public static final double Stow = 0.59;
     public static final double pos1 = 0.775;
-    public static final double pos2 = 0.75;
+    public static final double pos2 = 0.7425;
     public static final double pos3 = 0.7135;
     public static final double pos4 = 0.7095;
 }

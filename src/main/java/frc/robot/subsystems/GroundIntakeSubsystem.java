@@ -31,7 +31,7 @@ public class GroundIntakeSubsystem extends SubsystemBase {
 
   public void GroundIntake()
   {
-    motor.set(0.4);
+    motor.set(0.55);
   }
 
   public void GroundStop()

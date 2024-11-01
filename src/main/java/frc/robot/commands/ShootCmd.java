@@ -51,7 +51,7 @@ public class ShootCmd extends Command {
     {
       RobotContainer.shooter.shoot();
     }
-    else if(realTimeSpeed2 > 0.05 && RobotContainer.arm.getRotation() < 0.65)
+    else if(realTimeSpeed2 > 0.05 && RobotContainer.arm.getRotation() < 0.60)
     {
       RobotContainer.shooter.intake();
       RobotContainer.innerShooter.LRIntake();

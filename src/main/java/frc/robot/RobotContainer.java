@@ -14,6 +14,7 @@ import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.ArmCmd;
 import frc.robot.commands.AutoAlignCmd;
+import frc.robot.commands.AutoIntakeCmd;
 import frc.robot.commands.ArmPIDCmd;
 import frc.robot.commands.LRShootCmd;
 import frc.robot.commands.ShootCmd;
@@ -71,6 +72,7 @@ public class RobotContainer {
   private static ArmPIDCmd Speaker2 = new ArmPIDCmd(arm, ArmConstants.pos2);
   private static ArmPIDCmd Speaker3 = new ArmPIDCmd(arm, ArmConstants.pos3);
   private static ArmPIDCmd Speaker4 = new ArmPIDCmd(arm, ArmConstants.pos4);
+  
 
   
 
@@ -102,6 +104,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("LRShoot", new LRShootCmd(innerShooter));
     NamedCommands.registerCommand("align", new ZeroHeadingCmd(swerveSubsystem));
     NamedCommands.registerCommand("GIOutput", new GIOutputCommand(groundIntake));
+    NamedCommands.registerCommand("intake", new AutoIntakeCmd(shooter));
 
   
     configureBindings();
@@ -117,7 +120,7 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    // joystick 1
+    // joystick 
     //new JoystickButton(controller1, 5).onTrue(zeroheading);
     new JoystickButton(controller1, 5).toggleOnTrue(zeroheading);//this line replaces the above
     //new JoystickButton(controller1, 1).toggleOnTrue(align);
