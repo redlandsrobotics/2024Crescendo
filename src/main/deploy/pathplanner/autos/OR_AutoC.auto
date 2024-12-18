@@ -80,25 +80,6 @@
               }
             ]
           }
-        },
-        {
-          "type": "deadline",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "ScoreR_C"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "stow"
-                }
-              }
-            ]
-          }
         }
       ]
     }

@@ -123,7 +123,7 @@ public static final class ArmConstants {
     public static final double pos1 = 0.775;
     public static final double pos2 = 0.7425;
     public static final double pos3 = 0.7135;
-    public static final double pos4 = 0.7095;
+    public static final double pos4 = 0.65;
 }
 
 
@@ -147,7 +147,7 @@ public static final class OIAutoConstants {
 }
 
 public static final class EthansConstants {
-    public static final double speedMultiplier = 1.5;
+    public static final double speedMultiplier = 4;
 }
 
 }

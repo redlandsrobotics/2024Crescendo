@@ -44,7 +44,7 @@ public class SwerveJoystickCmd extends Command{
         //inputs
         double xSpeed = xSpdFunction.get() * EthansConstants.speedMultiplier;
         double ySpeed = ySpdFunction.get() * EthansConstants.speedMultiplier;
-        double turningSpeed = turningSpdFunction.get();
+        double turningSpeed = turningSpdFunction.get() * 1.5;
 
         
         xSpeed = Math.abs(xSpeed) > OIConstants.kDeadband ? xSpeed : 0.0;
